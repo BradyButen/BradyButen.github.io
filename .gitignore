@@ -1,0 +1,10 @@
+.claude/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Build artifacts / logs
+node_modules/
+*.log
+dist/
