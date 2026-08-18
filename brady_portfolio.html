@@ -1,0 +1,1957 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brady Buten Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false})"></script>
+<style>
+/* ── RESET ── */
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;zoom:0.75;}
+
+/* ── TOKENS ── */
+:root{
+  --bg:#0e0f0f;
+  --bg2:#161717;
+  --bg3:#1e1f1f;
+  --bg4:#242525;
+  --border:#2a2b2b;
+  --border2:#363737;
+  --text:#e8e6e1;
+  --text2:#8a8880;
+  --teal:#2dd4bf;
+  --teal-dim:#1a7a70;
+  --teal-bg:#0d2926;
+  --sans:'Instrument Sans',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --max:1140px;
+  --content:940px;
+}
+
+/* ── BASE ── */
+body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+button{font-family:var(--sans);cursor:pointer;}
+
+/* ── NAV ── */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--bg);border-bottom:0.5px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.9rem 2.5rem;gap:1rem;
+}
+.nav-brand{
+  font-family:var(--mono);font-size:18px;font-weight:500;
+  color:var(--text);display:flex;align-items:center;gap:0.5rem;
+  white-space:nowrap;
+}
+.nav-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0;}
+.nav-tabs{display:flex;gap:2px;flex-wrap:nowrap;min-width:0;}
+.nav-tabs-scroll{display:flex;gap:2px;flex-wrap:nowrap;min-width:0;overflow-x:auto;scrollbar-width:none;}
+.nav-tabs-scroll::-webkit-scrollbar{display:none;}
+.nav-tab{
+  font-size:18px;color:var(--text2);background:none;
+  border:none;padding:0.35rem 0.8rem;border-radius:5px;
+  letter-spacing:0.02em;transition:all 0.15s;white-space:nowrap;
+}
+.nav-tab:hover{color:var(--text);background:var(--bg3);}
+.nav-tab.active{color:var(--teal);background:var(--teal-bg);}
+.nav-right{display:flex;gap:1.25rem;align-items:center;flex-shrink:0;}
+.nav-link{font-family:var(--mono);font-size:18px;color:var(--text2);transition:color 0.15s;}
+.nav-link:hover{color:var(--teal);}
+
+/* ── NAV DROPDOWN ── */
+.nav-dropdown{position:relative;display:flex;}
+.nav-dropdown::after{content:'';position:absolute;top:100%;left:0;right:0;height:10px;}
+.nav-dropdown-menu{
+  position:absolute;top:calc(100% + 6px);right:0;
+  background:var(--bg2);border:0.5px solid var(--border);border-radius:8px;
+  padding:0.35rem;min-width:190px;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transform:translateY(-4px);
+  transition:opacity 0.15s,transform 0.15s,visibility 0.15s;
+  z-index:200;
+}
+.nav-dropdown:hover .nav-dropdown-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);}
+.nav-dropdown-item{
+  display:block;width:100%;font-size:18px;color:var(--text2);
+  padding:0.5rem 0.85rem;border-radius:5px;cursor:pointer;
+  background:none;border:none;text-align:left;font-family:var(--sans);
+  transition:all 0.12s;letter-spacing:0.02em;white-space:nowrap;
+}
+.nav-dropdown-item:hover{color:var(--text);background:var(--bg3);}
+.nav-dropdown-divider{height:0.5px;background:var(--border);margin:0.3rem 0.5rem;}
+
+/* ── VIEW SYSTEM ── */
+.view{display:none;}
+.view.active{display:block;}
+
+/* ── HOME: HERO ── */
+.hero{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:1fr auto;
+  gap:4rem;align-items:center;
+  padding:5rem 3rem 4.5rem;
+  border-bottom:0.5px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.hero-eyebrow{
+  font-family:var(--mono);font-size:15px;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:1.5rem;
+}
+.hero-name{
+  font-size:68px;font-weight:300;line-height:1.02;
+  letter-spacing:-0.03em;margin-bottom:1.5rem;color:var(--text);
+}
+.hero-name strong{font-weight:500;}
+.hero-desc{
+  font-size:18px;color:var(--text2);line-height:1.8;
+  font-weight:300;max-width:640px;margin-bottom:2.25rem;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:0.65rem;
+  font-family:var(--mono);font-size:12px;color:var(--teal);
+  letter-spacing:0.06em;border:0.5px solid var(--teal-dim);
+  background:var(--teal-bg);border-radius:6px;padding:0.5rem 1rem;
+}
+.headshot{
+  width:260px;height:260px;border-radius:50%;
+  background:var(--bg3);border:0.5px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;overflow:hidden;
+}
+.headshot img{width:100%;height:100%;object-fit:cover;}
+.headshot-ph{font-family:var(--mono);font-size:11px;color:var(--text2);text-align:center;line-height:2;}
+
+/* ── HOME: SECTIONS ── */
+.home-body{max-width:var(--max);margin:0 auto;padding:3rem 3rem 5rem;}
+.section-label{
+  font-family:var(--mono);font-size:16px;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--text2);margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.section-label::after{content:'';flex:1;height:0.5px;background:var(--border);}
+
+/* ── PROJECT GRID ── */
+.proj-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--border);
+  border:0.5px solid var(--border);border-radius:10px;
+  overflow:hidden;margin-bottom:1rem;
+}
+.pcard{
+  background:var(--bg2);padding:1.75rem;
+  cursor:pointer;transition:background 0.15s;position:relative;
+}
+.pcard:hover{background:var(--bg3);}
+.pcard-media{
+  width:100%;height:200px;background:var(--bg3);
+  border-radius:6px;margin-bottom:1.25rem;
+  display:flex;align-items:center;justify-content:center;
+  border:0.5px solid var(--border);position:relative;overflow:hidden;
+}
+.pcard-media img{width:100%;height:100%;object-fit:cover;border-radius:6px;object-position:center top;}
+.pcard-title{font-size:20px;font-weight:500;margin-bottom:0.5rem;color:var(--text);line-height:1.3;padding-right:1.75rem;}
+.dot-grid{position:absolute;inset:0;background-image:radial-gradient(circle,var(--border2) 1px,transparent 1px);background-size:20px 20px;}
+.pcard-placeholder{font-family:var(--mono);font-size:11px;color:var(--text2);letter-spacing:0.06em;position:relative;z-index:1;}
+.pcard-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.75rem;}
+.tag{font-family:var(--mono);font-size:13px;letter-spacing:0.07em;text-transform:uppercase;border-radius:4px;padding:3px 8px;}
+.tag-teal{color:var(--teal);background:var(--teal-bg);border:0.5px solid var(--teal-dim);}
+.tag-gray{color:var(--text2);background:var(--bg3);border:0.5px solid var(--border);}
+.pcard-desc{font-size:17px;color:var(--text2);line-height:1.65;font-weight:300;}
+.pcard-arrow{position:absolute;top:1.75rem;right:1.75rem;font-size:15px;color:var(--text2);transition:color 0.15s;}
+.pcard:hover .pcard-arrow{color:var(--teal);}
+.pcard-soon{
+  background:var(--bg2);padding:1.5rem 1.75rem;
+  display:flex;align-items:center;justify-content:center;
+  grid-column:span 2;
+}
+.pcard-soon-label{font-family:var(--mono);font-size:11px;color:var(--text2);letter-spacing:0.1em;margin-bottom:0.25rem;}
+.pcard-soon-text{font-size:15px;color:var(--text2);font-weight:300;}
+
+/* ── ABOUT SECTION ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;margin-bottom:2.5rem;}
+.about-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;padding:1.35rem;display:flex;flex-direction:column;gap:0;}
+.about-card-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:0.85rem;}
+.about-card-stat{font-family:var(--mono);font-size:40px;font-weight:500;color:var(--text);line-height:1;letter-spacing:-0.02em;margin-bottom:0.35rem;}
+.about-card-label{font-size:13px;color:var(--text2);font-weight:300;line-height:1.5;}
+.about-card-sub{font-family:var(--mono);font-size:11px;color:var(--text2);letter-spacing:0.06em;margin-top:auto;padding-top:0.85rem;}
+.about-signal-icon{font-size:20px;color:var(--teal);margin-bottom:0.75rem;display:block;}
+.about-signal-title{font-size:14px;font-weight:500;color:var(--text);margin-bottom:0.35rem;line-height:1.2;}
+.about-signal-desc{font-size:12px;color:var(--text2);line-height:1.6;font-weight:300;}
+
+/* ── IDENTITY BAR ── */
+.identity-bar{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  background:var(--bg2);border:0.5px solid var(--border);
+  border-radius:10px;overflow:hidden;margin-bottom:3rem;
+}
+.identity-fact{padding:1.5rem 2rem;display:flex;flex-direction:column;border-right:0.5px solid var(--border);}
+.identity-fact:last-child{border-right:none;}
+.identity-eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:0.6rem;}
+.identity-value{font-family:var(--mono);font-size:30px;font-weight:500;color:var(--text);line-height:1;letter-spacing:-0.02em;margin-bottom:0.5rem;}
+.identity-sub{font-size:15px;color:var(--text2);font-weight:300;line-height:1.5;}
+
+/* ── EXPERIENCE: hero card ── */
+.exp-hero-card{position:relative;border-radius:10px;overflow:hidden;height:280px;cursor:pointer;border:0.5px solid var(--border);margin-bottom:1.5rem;transition:border-color 0.2s;}
+.exp-hero-card:hover{border-color:var(--teal-dim);}
+.exp-hero-card img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
+.exp-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.90) 0%,rgba(0,0,0,0.45) 55%,rgba(0,0,0,0.1) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:1.75rem 2rem;}
+.exp-hero-eyebrow{font-size:36px;font-weight:600;color:#fff;line-height:1.1;margin-bottom:0.5rem;}
+.exp-hero-title{font-family:var(--mono);font-size:20px;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);margin-bottom:0.65rem;}
+.exp-hero-desc{font-size:16px;color:rgba(255,255,225,0.75);line-height:1.6;font-weight:300;max-width:640px;}
+.exp-hero-meta{font-family:var(--mono);font-size:16px;color:rgba(255,255,255,0.55);letter-spacing:0.06em;margin-top:0.75rem;}
+.exp-hero-arrow{position:absolute;top:1.25rem;right:1.25rem;font-size:17px;color:rgba(255,255,255,0.35);transition:color 0.15s;}
+.exp-hero-card:hover .exp-hero-arrow{color:var(--teal);}
+/* ── EXPERIENCE: secondary row ── */
+.exp-sec-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2.5rem;}
+.exp-sec-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;display:flex;flex-direction:column;gap:0.35rem;}
+.exp-sec-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);}
+.exp-sec-role{font-size:16px;font-weight:500;color:var(--text);line-height:1.2;}
+.exp-sec-desc{font-size:17px;color:var(--text2);line-height:1.6;font-weight:300;margin-top:0.1rem;}
+.exp-sec-date{font-family:var(--mono);font-size:11px;color:var(--text2);margin-top:auto;padding-top:0.75rem;border-top:0.5px solid var(--border);}
+
+/* ── MORE PROJECTS (compact) ── */
+.more-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--border);
+  border:0.5px solid var(--border);border-radius:10px;
+  overflow:hidden;margin-bottom:2.5rem;
+}
+.mcard-sm{background:var(--bg2);padding:1.25rem 1.5rem;cursor:pointer;transition:background 0.15s;position:relative;}
+.mcard-sm:hover{background:var(--bg3);}
+.mcard-sm-stat{font-family:var(--mono);font-size:13px;color:var(--teal);margin-bottom:0.4rem;}
+.mcard-sm-title{font-size:15px;font-weight:500;color:var(--text);margin-bottom:0.4rem;padding-right:1.5rem;line-height:1.3;}
+.mcard-sm-desc{font-size:13px;color:var(--text2);line-height:1.55;font-weight:300;margin-bottom:0.85rem;}
+.mcard-sm-footer{display:flex;align-items:center;justify-content:space-between;}
+.mcard-sm-pills{display:flex;gap:0.3rem;flex-wrap:wrap;}
+.pill{font-family:var(--mono);font-size:15px;color:var(--text2);background:var(--bg3);border:0.5px solid var(--border);border-radius:3px;padding:5px 11px;}
+.mcard-sm-date{font-family:var(--mono);font-size:11px;color:var(--text2);white-space:nowrap;margin-left:0.5rem;}
+.mcard-sm-arrow{position:absolute;top:1.25rem;right:1.25rem;font-size:14px;color:var(--text2);transition:color 0.15s;}
+.mcard-sm:hover .mcard-sm-arrow{color:var(--teal);}
+
+/* ── SKILLS PIPELINE ── */
+.pipeline{background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1.25rem;}
+.pipeline-header{display:flex;align-items:center;padding:1rem 0;border-bottom:0.5px solid var(--border);background:var(--bg3);}
+.pipeline-stage{flex:1;text-align:center;font-family:var(--mono);font-size:16px;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);}
+.pipeline-chevron{font-size:30px;color:var(--teal-dim);flex-shrink:0;}
+.pipeline-body{display:grid;grid-template-columns:repeat(5,1fr);}
+.pipeline-col{padding:1.4rem 1.2rem;display:flex;flex-direction:column;gap:0.5rem;border-right:0.5px solid var(--border);}
+.pipeline-col:last-child{border-right:none;}
+.pipeline-col .pill{font-size:16px;padding:4px 9px;}
+.skill-pills{display:flex;flex-wrap:wrap;gap:0.35rem;}
+
+/* ── HERO CONTACT ── */
+.hero-contact{display:flex;gap:1.5rem;margin-top:0.85rem;flex-wrap:wrap;}
+.hero-contact a{font-family:var(--mono);font-size:12px;color:var(--text2);text-decoration:none;transition:color 0.15s;letter-spacing:0.03em;}
+.hero-contact a:hover{color:var(--teal);}
+
+/* ── DETAIL: SHARED ── */
+.detail{max-width:var(--content);margin:0 auto;padding:3rem 2.5rem 6rem;}
+.back-btn{
+  font-family:var(--mono);font-size:18px;color:var(--text2);
+  background:none;border:none;display:flex;align-items:center;
+  gap:0.5rem;margin-bottom:2.5rem;letter-spacing:0.04em;
+  transition:color 0.15s;padding:0;
+}
+.back-btn:hover{color:var(--teal);}
+
+/* HERO MEDIA */
+.hero-media{
+  width:100%;height:540px;background:var(--bg2);
+  border-radius:10px;border:0.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.75rem;position:relative;overflow:hidden;
+}
+.hero-media img,.hero-media video{width:100%;height:100%;object-fit:cover;border-radius:10px;}
+.play-ring{
+  width:52px;height:52px;border-radius:50%;
+  background:rgba(14,15,15,0.85);border:0.5px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;color:var(--text);position:relative;z-index:1;
+}
+.media-label{position:absolute;bottom:1rem;left:1.25rem;font-family:var(--mono);font-size:11px;color:var(--text2);letter-spacing:0.06em;}
+
+/* DETAIL META */
+.detail-tags{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.85rem;}
+.detail-title{font-size:46px;font-weight:300;letter-spacing:-0.03em;line-height:1.05;color:var(--text);margin-bottom:0.4rem;}
+.detail-role{font-family:var(--mono);font-size:20px;color:var(--text2);letter-spacing:0.03em;margin-bottom:0;}
+.detail-meta{font-family:var(--mono);font-size:15px;color:var(--teal);letter-spacing:0.06em;margin-bottom:0.75rem;}
+
+/* ── UNIFIED PROJECT TYPOGRAPHY (non-Turkey pages) ──
+   Small, fixed set of text roles so every project page pulls from the
+   same scale instead of one-off inline font-sizes. */
+.label-mini{font-family:var(--mono);font-size:14px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text2);margin-bottom:0.6rem;}
+.label-mini.teal{color:var(--teal);}
+.card-title{font-size:16px;font-weight:500;color:var(--text);margin-bottom:0.3rem;line-height:1.3;}
+.card-desc{font-size:15px;color:var(--text2);line-height:1.65;font-weight:300;}
+
+/* METRICS ROW */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;margin-bottom:2.5rem;padding-bottom:1.75rem;border-bottom:0.5px solid var(--border);}
+.metrics.three{grid-template-columns:repeat(3,1fr);}
+.mcard{background:var(--bg2);border:0.5px solid var(--border);border-radius:8px;padding:1rem 1.25rem;}
+.mcard-val{font-family:var(--mono);font-size:28px;font-weight:500;color:var(--teal);margin-bottom:4px;}
+.mcard-key{font-size:18px;color:var(--text2);line-height:1.4;}
+
+/* BLOG SECTIONS */
+.blog-section{margin-bottom:2.5rem;}
+.eyebrow{font-family:var(--mono);font-size:18px;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);margin-bottom:0.6rem;}
+.section-h{font-size:36px;font-weight:400;color:var(--text);margin-bottom:1.1rem;letter-spacing:-0.015em;line-height:1.25;}
+.body-text{font-size:20px;color:var(--text2);line-height:1.8;font-weight:300;margin-bottom:1.4rem;}
+.body-text:last-of-type{margin-bottom:0;}
+
+/* IMAGES */
+.img-block{width:100%;background:var(--bg2);border:0.5px solid var(--border);border-radius:8px;overflow:hidden;margin:1.75rem 0;}
+.img-inner{height:280px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.img-inner img{width:100%;height:100%;object-fit:cover;}
+.img-inner.tall{height:400px;}
+.img-caption{padding:0.75rem 1.1rem;border-top:0.5px solid var(--border);font-family:var(--mono);font-size:14px;color:var(--text2);letter-spacing:0.03em;}
+.two-up{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.75rem 0;align-items:start;}
+.two-up .img-block{margin:0;}
+
+/* PULL QUOTE */
+.pull-quote{border-left:2px solid var(--teal);padding:1rem 1.5rem;margin:1.75rem 0;background:var(--teal-bg);border-radius:0 6px 6px 0;}
+.pull-quote p{font-family:var(--mono);font-size:19px;color:var(--teal);line-height:1.65;letter-spacing:0.02em;}
+
+/* TECH PILLS */
+.tech-row{display:flex;flex-wrap:wrap;gap:0.5rem;padding-top:2rem;border-top:0.5px solid var(--border);margin-top:2rem;}
+
+/* CAROUSEL NAV TAB */
+.carousel-tab{
+  flex:1;font-family:var(--mono);font-size:16px;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.7rem 0.5rem;border:none;border-right:0.5px solid var(--border);
+  background:none;color:var(--text2);cursor:pointer;transition:all 0.15s;
+}
+.carousel-tab:last-child{border-right:none;}
+.carousel-tab.active,.carousel-tab[data-active]{color:var(--teal);background:var(--teal-bg);}
+
+/* LINK BUTTONS */
+.btn-link{
+  font-family:var(--mono);font-size:16px;color:var(--text2);
+  background:var(--bg3);border:0.5px solid var(--border2);
+  border-radius:5px;padding:0.3rem 0.8rem;
+  text-decoration:none;display:inline-flex;align-items:center;
+  gap:0.4rem;transition:all 0.15s;
+}
+.btn-link:hover{color:var(--teal);border-color:var(--teal-dim);background:var(--teal-bg);}
+
+/* ── MORE VIEW ── */
+.more-detail{max-width:var(--content);margin:0 auto;padding:3rem 2.5rem 6rem;}
+.more-header{margin-bottom:2rem;}
+.more-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:0.5rem;}
+.more-title{font-size:32px;font-weight:300;letter-spacing:-0.02em;color:var(--text);line-height:1.2;}
+.more-entry{background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:2rem;scroll-margin-top:72px;}
+.more-entry-media{width:100%;height:320px;background:var(--bg3);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-bottom:0.5px solid var(--border);}
+.more-entry-media img{width:100%;height:100%;object-fit:cover;}
+.more-entry-body{padding:2rem;}
+.more-entry-stat{font-family:var(--mono);font-size:14px;color:var(--teal);margin-bottom:0.4rem;}
+.more-entry-title{font-size:20px;font-weight:500;color:var(--text);margin-bottom:0.6rem;}
+.more-entry-desc{font-size:16px;color:var(--text2);line-height:1.8;font-weight:300;}
+
+/* ── KATEX ── */
+.katex{color:inherit;-webkit-font-smoothing:antialiased;font-size:1.2em;}
+.katex-display .katex{font-size:1.45em;}
+.katex-display{margin:0.25rem 0;overflow-x:auto;overflow-y:hidden;}
+
+/* ── WAVE ── */
+@keyframes wave-drift{from{transform:translateX(0)}to{transform:translateX(-5%)}}
+.hero-wave{position:absolute;bottom:0;left:-5%;right:-5%;height:80px;pointer-events:none;opacity:0.52;animation:wave-drift 12s ease-in-out infinite alternate;}
+.hero-wave svg{width:100%;height:100%;}
+</style>
+</head>
+<body>
+<!-- SVG filter: lifts inverted plot blacks to match site background (#0e0f0f) -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="plot-darkbg">
+      <feColorMatrix type="matrix" values="0.9 0 0 0 0.055
+                                           0 0.9 0 0 0.055
+                                           0 0 0.9 0 0.055
+                                           0 0 0  1 0"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand"><div class="nav-dot"></div>Brady Buten</div>
+  <div class="nav-tabs">
+    <div class="nav-tabs-scroll">
+      <button class="nav-tab" onclick="go('home',this)">Home</button>
+      <button class="nav-tab active" onclick="go('turkey',this)">Turkey Bot</button>
+      <button class="nav-tab" onclick="go('incubator',this)">Incubator</button>
+      <button class="nav-tab" onclick="go('gm',this)">GM</button>
+      <button class="nav-tab" onclick="go('et',this)">ET</button>
+    </div>
+    <div class="nav-dropdown">
+      <button class="nav-tab" id="nav-more-btn">More ▾</button>
+      <div class="nav-dropdown-menu">
+        <button class="nav-dropdown-item" onclick="go('linkage',document.getElementById('nav-more-btn'))">Precision Linkage</button>
+        <button class="nav-dropdown-item" onclick="go('motionpaint',document.getElementById('nav-more-btn'))">MotionPaint</button>
+      </div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <a class="nav-link" href="https://github.com/bradybuten" target="_blank">Github</a>
+    <a class="nav-link" href="Media\BradyButen_Resume_2026.pdf" target="_blank">Resume</a>
+    <a class="nav-link" href="https://linkedin.com/in/brady-buten" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<!-- ════════════════ HOME ════════════════ -->
+<div class="view" id="view-home">
+
+  <div class="hero">
+    <div>
+      <h1 class="hero-name">Brady Buten</h1>
+      <p class="hero-desc">Controls and robotics engineer with deployed hardware and shipped production code. Autonomous canine robot to scare turkeys; real-time controls at GM Factory Zero production line; engine control on deployed sprayers at Equipment Technologies. Dual BSE in Mechanical Engineering (Robotics Concentration) and Computer Engineering, with an MSE in Electrical and Computer Engineering (Controls Concentration) in progress.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+        <span class="tag tag-teal" style="font-size:15px;">C++ · Python · ROS2</span>
+        <span class="tag tag-teal" style="font-size:15px;">Estimation · Planning · Trajectory Optimization</span>
+        <span class="tag tag-teal" style="font-size:15px;">Autonomous Robotics</span>
+        <span class="tag tag-teal" style="font-size:15px;">Embedded Systems &amp; Real-time Control</span>
+      </div>
+    </div>
+    <div class="headshot">
+      <!-- Replace with: <img src="media/headshot.jpg" alt="Brady Buten"> -->
+      <img src = "Media\headshot.png" alt = "Brady Buten">
+    </div>
+    <div class="hero-wave" aria-hidden="true"><svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,50 C360,20 720,80 1080,40 C1260,20 1350,60 1440,40" fill="none" stroke="var(--teal)" stroke-width="1.75"/><path d="M0,62 C360,32 720,92 1080,52 C1260,32 1350,72 1440,52" fill="none" stroke="var(--teal)" stroke-width="1"/></svg></div>
+  </div>
+
+  <div class="home-body">
+
+    <div class="section-label">Education</div>
+    <div style="background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:3rem;">
+
+      <!-- MS ECE -->
+      <div style="padding:1.4rem 2rem;border-bottom:0.5px solid var(--border);">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.3rem;">
+          <div style="font-size:20px;font-weight:500;color:var(--text);">Electrical &amp; Computer Engineering MSE</div>
+          <div style="font-family:var(--mono);font-size:16px;color:var(--text2);white-space:nowrap;margin-left:1rem;">University of Michigan · May 2027</div>
+        </div>
+        <div style="font-family:var(--mono);font-size:16px;color:var(--teal);margin-bottom:0.75rem;">Controls Concentration</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+          <span class="tag tag-gray">Optimal Control</span>
+          <span class="tag tag-gray">MPC</span>
+          <span class="tag tag-gray">Trajectory Optimization</span>
+          <span class="tag tag-gray">GNC</span>
+          <span class="tag tag-gray">System Identification</span>
+          <span class="tag tag-gray">Estimation</span>
+        </div>
+      </div>
+
+      <!-- Mechanical Engineering BSE -->
+      <div style="padding:1.4rem 2rem;border-bottom:0.5px solid var(--border);">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.3rem;">
+          <div style="font-size:20px;font-weight:500;color:var(--text);">Mechanical Engineering BSE</div>
+          <div style="font-family:var(--mono);font-size:16px;color:var(--text2);white-space:nowrap;margin-left:1rem;">University of Michigan · May 2026</div>
+        </div>
+        <div style="font-family:var(--mono);font-size:16px;color:var(--teal);margin-bottom:0.75rem;">Robotics Concentration</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+          <span class="tag tag-gray">Dynamics &amp; Vibrations</span>
+          <span class="tag tag-gray">Mechanism Design</span>
+          <span class="tag tag-gray">Control System Analysis</span>
+          <span class="tag tag-gray">Experimental Design</span>
+        </div>
+      </div>
+
+      <!-- Computer Engineering BSE -->
+      <div style="padding:1.4rem 2rem;border-bottom:0.5px solid var(--border);">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.75rem;">
+          <div style="font-size:20px;font-weight:500;color:var(--text);">Computer Engineering BSE</div>
+          <div style="font-family:var(--mono);font-size:16px;color:var(--text2);white-space:nowrap;margin-left:1rem;">University of Michigan · May 2026</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+          <span class="tag tag-gray">Embedded Control</span>
+          <span class="tag tag-gray">Real-time Systems</span>
+          <span class="tag tag-gray">Data Structures &amp; Algorithms</span>
+          <span class="tag tag-gray">Digital Control</span>
+        </div>
+      </div>
+
+      <!-- Honors + Teaching -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;align-items:start;">
+
+        <div style="padding:1.4rem 2rem;border-right:0.5px solid var(--border);">
+          <div style="font-family:var(--mono);font-size:16px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text2);margin-bottom:0.85rem;">Grades and Honors</div>
+          <div style="font-family:var(--mono);font-size:20px;font-weight:500;color:var(--text);line-height:1;margin-bottom:0.4rem;">GPA: 3.93</div>
+          <div style="font-size:16px;color:var(--text2);margin-bottom:0.3rem;">Summa Cum Laude · Dean's List</div>
+          <div style="font-size:16px;color:var(--text2);margin-bottom:0.3rem;">Angell Scholar · 6 Consecutive Straight-A Semesters</div>
+        </div>
+
+        <div style="padding:1.4rem 2rem;">
+          <div style="font-family:var(--mono);font-size:16px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text2);margin-bottom:0.85rem;">Teaching Experience</div>
+          <div style="font-size:20px;font-weight:500;color:var(--text);line-height:1;margin-bottom:0.4rem;">Lead Instructional Assistant · 5 Semesters</div>
+          <div style="font-size:16px;color:var(--text2);margin-bottom:0.65rem;">Thermodynamics · University of Michigan</div>
+          <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+            <span class="tag tag-gray">Course Logistics</span>
+            <span class="tag tag-gray">Lectures</span>
+            <span class="tag tag-gray">Team Mentoring</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section-label">Sponsored Projects</div>
+    <div class="proj-grid">
+
+      <div class="pcard" onclick="go('turkey',document.querySelectorAll('.nav-tab')[1])">
+        <i class="ti ti-arrow-right pcard-arrow" aria-hidden="true"></i>
+        <div class="pcard-media">
+          <img src="Media\TurkeyRobot\TurkeyRobot_Showdown.png" alt="Turkey bot">
+        </div>
+        <div class="pcard-tags">
+          <span class="tag tag-teal">Sponsored · Michigan DNR</span>
+          <span class="tag tag-teal">Technical Lead</span>
+        </div>
+        <div class="pcard-title">Autonomous Turkey Deterrent Robot</div>
+        <div class="pcard-desc">Michigan's wild turkeys have started attacking people. The DNR needed something to fight back, so we built a robot dog. Computer vision, UKF sensor fusion, A* path planning, MPC, and canine pose control on a Raspberry Pi 5. Tested in the field scaring a real turkey flock.</div>
+      </div>
+
+      <div class="pcard" onclick="go('incubator',document.querySelectorAll('.nav-tab')[2])">
+        <i class="ti ti-arrow-right pcard-arrow" aria-hidden="true"></i>
+        <div class="pcard-media">
+          <img src="Media\Incubator\Incubator_Hero.png" alt="Cell incubator">
+        </div>
+        <div class="pcard-tags">
+          <span class="tag tag-teal">Sponsored · Sartorius</span>
+          <span class="tag tag-teal">Project Lead</span>
+        </div>
+        <div class="pcard-title">Custom Live Cell Incubator</div>
+        <div class="pcard-desc">Led a 6-person team across mechanical, embedded, and controls while building the entire controls stack myself: Raspberry Pi supervisory control, a custom STM32 serial protocol, and a full firmware simulator to develop against while the board was still in fab. Hit 37°C ±0.5 and &gt;90% RH, delivered a week early.</div>
+      </div>
+
+    </div>
+
+    <div class="section-label">Internship Experience</div>
+
+    <div class="exp-hero-card" onclick="go('gm',document.querySelectorAll('.nav-tab')[3])">
+      <img src="Media\GM\GM_FactoryFloor.png" alt="GM Factory Zero production floor">
+      <div class="exp-hero-overlay">
+        <div class="exp-hero-eyebrow">General Motors: Factory ZERO</div>
+        <div class="exp-hero-title">Controls Engineer Intern</div>
+        <p class="exp-hero-desc">Built and deployed a real-time inspection system to GM's live EV production line. Upgraded existing processes in a high-stakes manufacturing environment.</p>
+        <div class="exp-hero-meta">Detroit, MI · May – Aug 2025</div>
+      </div>
+    </div>
+
+    <div class="exp-hero-card" onclick="go('et',document.querySelectorAll('.nav-tab')[4])">
+      <img src="Media\ET\ET_InsideSprayer.jpg" alt="Equipment Technologies: inside Apache sprayer" style="object-position:center 30%;">
+      <div class="exp-hero-overlay">
+        <div class="exp-hero-eyebrow">Equipment Technologies</div>
+        <div class="exp-hero-title">Vehicle Controls &amp; Software Engineering Intern</div>
+        <p class="exp-hero-desc">Embedded controls and software development on agricultural vehicle systems. Fan control, CAN bus integration, and real hardware validation on Apache sprayers.</p>
+        <div class="exp-hero-meta">Mooresville, IN · May – Aug 2026</div>
+      </div>
+    </div>
+
+    <div class="section-label">Course Projects</div>
+    <div class="proj-grid">
+
+      <div class="pcard" onclick="go('linkage',document.getElementById('nav-more-btn'))">
+        <i class="ti ti-arrow-right pcard-arrow" aria-hidden="true"></i>
+        <div class="pcard-media">
+          <img src="Media\Linkage\Linkage_Hero.png" alt="High-Speed Precision Linkage">
+        </div>
+        <div class="pcard-tags">
+          <span class="tag tag-teal">Competition: 1st Place</span>
+          <span class="tag tag-teal">Expo Presenter</span>
+        </div>
+        <div class="pcard-title">High-Speed Precision Linkage</div>
+        <div class="pcard-desc">Optimized four-bar linkage geometry in SolidWorks, validated dynamics in ADAMS, then tuned PID gains for responsiveness and accuracy on live hardware. Zero missed targets during operation.</div>
+      </div>
+
+      <div class="pcard" onclick="go('motionpaint',document.getElementById('nav-more-btn'))">
+        <i class="ti ti-arrow-right pcard-arrow" aria-hidden="true"></i>
+        <div class="pcard-media">
+          <img src="Media\MotionPaint\MotionPaint_OverallSystem.png" alt="MotionPaint" style="object-position:center 35%;">
+        </div>
+        <div class="pcard-tags">
+          <span class="tag tag-teal">EECS 373</span>
+          <span class="tag tag-teal">C</span>
+        </div>
+        <div class="pcard-title">MotionPaint</div>
+        <div class="pcard-desc">Gesture-controlled memory game across two wireless STM32 nodes linked by a custom protocol. Dual-glove sensor fusion and a camera-based calibration routine drive real-time gesture tracking.</div>
+      </div>
+
+      <div class="pcard-soon" style="padding:0;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--teal-dim);border:0.5px solid var(--teal-dim);align-items:stretch;">
+        <div style="background:var(--bg2);padding:1.75rem 2rem;">
+          <div class="pcard-tags">
+            <span class="tag tag-teal">INCOMING · FALL 2026</span>
+          </div>
+          <div class="pcard-title">Quadrotor Control</div>
+          <div class="pcard-desc">Will cover online learning, constrained MPC, and non-stochastic control for quadrotors in aerodynamically uncertain environments. Target tracking, mapping, and exploration. C++/Python/ROS from simulation to hardware.</div>
+        </div>
+        <div style="background:var(--bg2);padding:1.75rem 2rem;">
+          <div class="pcard-tags">
+            <span class="tag tag-teal">INCOMING · FALL 2026</span>
+          </div>
+          <div class="pcard-title">Robotics Systems Lab</div>
+          <div class="pcard-desc">Graduate lab split into BotLab and ArmLab: SLAM and PID control on a ROS2-based mobile robot, then kinematics and object detection on a 6-DOF manipulator. Simulation through to real hardware.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="section-label">Technical Stack</div>
+    <div class="pipeline">
+      <div class="pipeline-header">
+        <span class="pipeline-stage">Perception</span>
+        <span class="pipeline-chevron">›</span>
+        <span class="pipeline-stage">Estimation</span>
+        <span class="pipeline-chevron">›</span>
+        <span class="pipeline-stage">Planning</span>
+        <span class="pipeline-chevron">›</span>
+        <span class="pipeline-stage">Control</span>
+      </div>
+      <div class="pipeline-body" style="grid-template-columns:repeat(4,1fr);">
+        <div class="pipeline-col">
+          <span class="pill">YOLO</span>
+          <span class="pill">OpenCV</span>
+          <span class="pill">GPS/GNSS</span>
+          <span class="pill">IMU</span>
+          <span class="pill">PyTorch</span>
+          <span class="pill">Camera I/O</span>
+        </div>
+        <div class="pipeline-col">
+          <span class="pill">UKF/EKF</span>
+          <span class="pill">Sensor Fusion</span>
+          <span class="pill">SLAM</span>
+          <span class="pill">Localization</span>
+          <span class="pill">ROS2 tf2</span>
+          <span class="pill">Dead Reckoning</span>
+        </div>
+        <div class="pipeline-col">
+          <span class="pill">MPC</span>
+          <span class="pill">A*</span>
+          <span class="pill">Motion Planning</span>
+          <span class="pill">Nav2</span>
+          <span class="pill">Behavior Trees</span>
+          <span class="pill">RRT*</span>
+          <span class="pill">Costmap</span>
+          <span class="pill">MoveIt2</span>
+        </div>
+        <div class="pipeline-col">
+          <span class="pill">PID</span>
+          <span class="pill">LQR</span>
+          <span class="pill">State Space</span>
+          <span class="pill">System ID</span>
+          <span class="pill">Digital Control</span>
+          <span class="pill">Feedforward</span>
+          <span class="pill">CasADi/IPOPT</span>
+          <span class="pill">Nonlinear Control</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pipeline" style="margin-top:0.75rem;">
+      <div class="pipeline-body" style="grid-template-columns:1fr 1fr;">
+        <div class="pipeline-col">
+          <div style="font-family:var(--mono);font-size:16px;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.5rem;">Software</div>
+          <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+            <span class="pill">C/C++</span>
+            <span class="pill">Python</span>
+            <span class="pill">MATLAB / Simulink</span>
+            <span class="pill">ROS2</span>
+            <span class="pill">Git</span>
+            <span class="pill">Linux</span>
+            <span class="pill">PyTorch</span>
+            <span class="pill">Gazebo</span>
+            <span class="pill">CasADi</span>
+            <span class="pill">SolidWorks</span>
+            <span class="pill">PLC</span>
+            <span class="pill">KiCad</span>
+          </div>
+        </div>
+        <div class="pipeline-col">
+          <div style="font-family:var(--mono);font-size:16px;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.5rem;">Hardware</div>
+          <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+            <span class="pill">Raspberry Pi</span>
+            <span class="pill">STM32</span>
+            <span class="pill">ESP32</span>
+            <span class="pill">Arduino</span>
+            <span class="pill">Motor Drivers</span>
+            <span class="pill">CAN Bus</span>
+            <span class="pill">UART</span>
+            <span class="pill">I2C</span>
+            <span class="pill">SPI</span>
+            <span class="pill">PWM</span>
+            <span class="pill">GPS / IMU</span>
+            <span class="pill">Machining &amp; Fabrication</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</div><!-- /home -->
+
+
+<!-- ════════════════ TURKEY BOT ════════════════ -->
+<div class="view active" id="view-turkey">
+<div class="detail" style="max-width:var(--max);">
+  <button class="back-btn" onclick="go('home',document.querySelectorAll('.nav-tab')[0])">
+    <i class="ti ti-arrow-left" aria-hidden="true"></i> Home
+  </button>
+
+  <div class="hero-media">
+    <!-- Replace with: <video src="media/field_trial.mp4" autoplay loop muted playsinline></video> -->
+    <img src = "Media\TurkeyRobot\TurkeyRobot_Showdown.png", alt = "Turkey Robot Standoff">
+  </div>
+
+  <!-- HEADER -->
+  <div style="margin-bottom:1.25rem;">
+    <h1 class="detail-title">Autonomous Turkey Deterrent Robot</h1>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:0.65rem;flex-wrap:wrap;gap:0.75rem;">
+      <div class="detail-role">Technical Lead – Controls & Vision</div>
+      <div style="display:flex;gap:0.5rem;flex-shrink:0;">
+        <a href="https://github.com/BradyButen/Turkey-Deterrent-Robot" target="_blank" class="btn-link">↗ Github</a>
+        <a href="https://docs.google.com/document/d/1zHJhsAx8bc-QkRzcZut7_iU3RmNrhZ0Yq_nCpuRR2Vk/view?usp=sharing" target="_blank" class="btn-link">↗ Final Report</a>
+      </div>
+    </div>
+  </div>
+  <div style="border-bottom:0.5px solid var(--border);margin-bottom:1.75rem;"></div>
+
+  <!-- METRICS -->
+  <div class="metrics" style="margin-bottom:1.75rem;grid-template-columns:repeat(4,1fr);">
+    <div class="mcard"><div class="mcard-val">Michigan DNR</div><div class="mcard-key">Company Sponsor</div></div>
+    <div class="mcard"><div class="mcard-val">15 Weeks</div><div class="mcard-key">Concept to Deliverable</div></div>
+    <div class="mcard"><div class="mcard-val">Validation</div><div class="mcard-key">Scared Away Live Turkeys</div></div>
+    <div class="mcard"><div class="mcard-val">Recognition</div><div class="mcard-key">Advisory Board Presenter</div></div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="blog-section">
+    <div class="eyebrow">Project Overview</div>
+    <h2 class="section-h">The turkeys declared war, so we built a robot dog to fight back</h2>
+    <p class="body-text">
+      Wild turkeys on Michigan's campus have been attacking pedestrians, blocking traffic, and pecking at parked cars. They're federally protected, so you can't harm or relocate them. 
+      To address this problem, the Michigan Department of Natural Resources (DNR) sponsored us to find an autonomous solution to humanely deter turkeys away from high foot-traffic zones and into nearby wilderness areas.</p>
+    <div style="display:grid;grid-template-columns:3fr 2fr;gap:0.75rem;align-items:stretch;margin:1rem 0 0.75rem;">
+      <div style="background:var(--bg3);border:0.5px solid var(--border);border-radius:8px;overflow:hidden;min-height:200px;">
+        <img src="Media\TurkeyRobot\TurkeyRobot_TurkeyTraffic.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+      </div>
+      <div style="background:var(--bg3);border:0.5px solid var(--border);border-radius:8px;overflow:hidden;min-height:200px;">
+        <img src="Media\TurkeyRobot\TurkeyRobot_TurkeyChase.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+      </div>
+    </div>
+    <p class="body-text", style="margin-bottom: 3rem;">
+      Left: turkeys are blocking university public transportation. Right: turkeys are chasing a student just outside the mechanical engineering building. 
+      
+    <p class="body-text">
+      The mechanical engineering marketing team filmed a full project breakdown near the end of the semester (I show up at around 2:17). Also, below is a high-level summary before diving into the technical details.
+      
+    <!-- Unified card: text left, video right -->
+    <div style="display:grid;grid-template-columns:5fr 3fr;align-items:stretch;margin:1.75rem 0 0;background:var(--bg2);border:0.5px solid var(--border);border-radius:8px;overflow:hidden;">
+
+      <!-- Text panel -->
+      <div style="padding:1.75rem;display:flex;flex-direction:column;gap:1.25rem;border-right:0.5px solid var(--border);">
+        <div>
+          <div style="font-family:var(--mono);font-size:18px;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.6rem;">The build</div>
+          <p style="font-size:20px;color:var(--text2);line-height:1.65;margin:0;">
+            We built a robot dog to patrol high foot-traffic zones around Michigan campus. The robot mimics dog behavior including walking, running, barking, and growling. A separate skid-steer drivetrain is in charge of maneuvering around rough, uneven outdoor terrain.
+        </div>
+        <div>
+          <div style="font-family:var(--mono);font-size:18px;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.6rem;">The brains</div>
+          <p style="font-size:20px;color:var(--text2);line-height:1.65;margin:0;">
+            The autonomy stack runs computer vision to detect turkeys in the field of view, a UKF to fuse GPS and IMU data to estimate location in space, navigation algorithms to plan an obstacle-free pursuit path, and low-level controls to drive the robot's gestures and drivetrain. All of it runs in real-time on a Raspberry Pi 5.
+
+          </div>
+        <div>
+          <div style="font-family:var(--mono);font-size:18px;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:0.6rem;">The validation</div>
+          <p style="font-size:20px;color:var(--text2);line-height:1.65;margin:0;">
+            We took our robot dog "Corndog" out near university campus and successfully scared live turkeys in manual mode using a custom operator UI. Autonomous features were validated separately against a static decoy in both indoor and outdoor environments.
+</p>
+        </div>
+      </div>
+
+      <!-- Video panel -->
+      <div style="background:#000;display:flex;align-items:center;">
+        <video src="Media\TurkeyRobot\TurkeyRobot_DepartmentalVideo.mp4" controls style="width:100%;display:block;"></video>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MY ROLE -->
+  <div class="blog-section">
+    <div class="eyebrow">My role</div>
+    <h2 class="section-h">Technical execution and task delegation done simultaneously</h2>
+    <p class="body-text">
+      The project consisted of 13 students across three subteams. I served as technical lead of the controls & vision branch, taking on both a hands-on development role and broader team leadership. Below is an overview of my contributions across both fronts.
+    <!-- Unified role card -->
+    <div style="background:var(--bg2);border:0.5px solid var(--border2);border-radius:8px;overflow:hidden;margin:1.5rem 0 0;">
+
+      <!-- Technical grid -->
+      <div style="padding:1.75rem 1.75rem 1.5rem;">
+        <div style="font-family:var(--mono);font-size:20px;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);margin-bottom:1.1rem;">Technical ownership</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;">
+          <div style="background:var(--bg3);border:0.5px solid var(--border);border-radius:6px;padding:1.1rem 1.1rem;">
+            <div style="font-family:var(--mono);font-size:18px;color:var(--teal);margin-bottom:0.5rem;">Architecture</div>
+            <div style="font-size:18px;color:var(--text2);line-height:1.65;">Lead software design, system integration and validation.</div>
+          </div>
+          <div style="background:var(--bg3);border:0.5px solid var(--border);border-radius:6px;padding:1.1rem 1.1rem;">
+            <div style="font-family:var(--mono);font-size:18px;color:var(--teal);margin-bottom:0.5rem;">Vision Integration</div>
+            <div style="font-size:18px;color:var(--text2);line-height:1.65;">Integrated vision object detections with range and bearing estimates.</div>
+          </div>
+          <div style="background:var(--bg3);border:0.5px solid var(--border);border-radius:6px;padding:1.1rem 1.1rem;">
+            <div style="font-family:var(--mono);font-size:18px;color:var(--teal);margin-bottom:0.5rem;">Localization</div>
+            <div style="font-size:18px;color:var(--text2);line-height:1.65;">UKF algorithm with GPS and IMU readings to estimate pose.</div>
+          </div>
+          <div style="background:var(--bg3);border:0.5px solid var(--border);border-radius:6px;padding:1.1rem 1.1rem;">
+            <div style="font-family:var(--mono);font-size:18px;color:var(--teal);margin-bottom:0.5rem;">Path Planning</div>
+            <div style="font-size:18px;color:var(--text2);line-height:1.65;">A* pathfinding on zone CSV with real-time obstacle avoidance.</div>
+          </div>
+          <div style="background:var(--bg3);border:0.5px solid var(--border);border-radius:6px;padding:1.1rem 1.1rem;">
+            <div style="font-family:var(--mono);font-size:18px;color:var(--teal);margin-bottom:0.5rem;">Drivetrain Control</div>
+            <div style="font-size:18px;color:var(--text2);line-height:1.65;">MPC layer for constraint enforcement. Drivetrain wheel PID tuning. </div>
+          </div>
+          <div style="background:var(--bg3);border:0.5px solid var(--border);border-radius:6px;padding:1.1rem 1.1rem;">
+            <div style="font-family:var(--mono);font-size:18px;color:var(--teal);margin-bottom:0.5rem;">Canine Gestures</div>
+            <div style="font-size:18px;color:var(--text2);line-height:1.65;">Canine gestures and bark triggers. Low level servo PWM control.</div>
+          </div>
+          <div style="background:var(--bg3);border:0.5px solid var(--border);border-radius:6px;padding:1.1rem 1.1rem;">
+            <div style="font-family:var(--mono);font-size:18px;color:var(--teal);margin-bottom:0.5rem;">Behavior Planner</div>
+            <div style="font-size:18px;color:var(--text2);line-height:1.65;">FSM for behavior execution using vision and pose feedback.</div>
+          </div>
+          <div style="background:var(--bg3);border:0.5px solid var(--border);border-radius:6px;padding:1.1rem 1.1rem;">
+            <div style="font-family:var(--mono);font-size:18px;color:var(--teal);margin-bottom:0.5rem;">User Interface</div>
+            <div style="font-size:18px;color:var(--text2);line-height:1.65;">Operator interface, live camera feed, behavior overrides, field data</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div style="border-top:0.5px solid var(--border);"></div>
+
+      <!-- Leadership grid -->
+      <div style="padding:1.5rem 1.75rem 1.75rem;">
+        <div style="font-family:var(--mono);font-size:20px;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);margin-bottom:1.1rem;">Team leadership</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;">
+          <div style="border-left:2px solid var(--teal-dim);padding:0.8rem 0 0.8rem 1.2rem;">
+            <div style="font-family:var(--mono);font-size:18px;color:var(--text);margin-bottom:0.45rem;">Technical Direction</div>
+            <div style="font-size:18px;color:var(--text2);line-height:1.65;">Defined system architecture and roadmap from requirements through implementation, setting priorities and technical direction.</div>
+          </div>
+          <div style="border-left:2px solid var(--teal-dim);padding:0.8rem 0 0.8rem 1.2rem;">
+            <div style="font-family:var(--mono);font-size:18px;color:var(--text);margin-bottom:0.45rem;">Task Allocation</div>
+            <div style="font-size:18px;color:var(--text2);line-height:1.65;">Task allocation across a mechanical-heavy team, owning the software and autonomy scope while keeping the broader team productive.</div>
+          </div>
+          <div style="border-left:2px solid var(--teal-dim);padding:0.8rem 0 0.8rem 1.2rem;">
+            <div style="font-family:var(--mono);font-size:18px;color:var(--text);margin-bottom:0.45rem;">Sponsor Relations</div>
+            <div style="font-size:18px;color:var(--text2);line-height:1.65;">Led sponsor relations with DNR. Provided routine progress updates, coordinated sponsor visits, and maintained stakeholder alignment.</div>
+          </div>
+          <div style="border-left:2px solid var(--teal-dim);padding:0.8rem 0 0.8rem 1.2rem;">
+            <div style="font-family:var(--mono);font-size:18px;color:var(--text);margin-bottom:0.45rem;">Integration Subteam</div>
+            <div style="font-size:18px;color:var(--text2);line-height:1.65;">Identified a critical gap in integration, proposed and founded a subteam drawing from all three teams to own assembly and wire harnessing.</div>
+          </div>
+          <div style="border-left:2px solid var(--teal-dim);padding:0.8rem 0 0.8rem 1.2rem;">
+            <div style="font-family:var(--mono);font-size:18px;color:var(--text);margin-bottom:0.45rem;">Team Logistics</div>
+            <div style="font-size:18px;color:var(--text2);line-height:1.65;">Ran weekly all-hands standups, coordinated across the full team, and introduced a deadline tracker to keep developments on pace.</div>
+          </div>
+          <div style="border-left:2px solid var(--teal-dim);padding:0.8rem 0 0.8rem 1.2rem;">
+            <div style="font-family:var(--mono);font-size:18px;color:var(--text);margin-bottom:0.45rem;">Documentation and Handoff</div>
+            <div style="font-size:18px;color:var(--text2);line-height:1.65;">Led technical documentation and final reporting. Independently authored a proposal outlining recommended next technical steps.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SYSTEM ARCHITECTURE -->
+  <div class="blog-section">
+    <div class="eyebrow">System architecture</div>
+    <h2 class="section-h">The autonomy stack at a glance</h2>
+    <p class="body-text">
+      Below is a simplified model of the autonomy stack, starting with vision, flowing through mapping and path planning, and ending with drivetrain and canine actuation.
+    </p>
+
+    <div style="display:grid;grid-template-columns:1fr 48px 1fr;grid-template-rows:auto 48px auto;margin:1.25rem 0;">
+
+      <!-- 01 · DETECTION (top-left) -->
+      <div style="background:var(--bg2);border:0.5px solid var(--border2);border-radius:8px;padding:1.25rem;display:flex;flex-direction:column;gap:0.75rem;">
+        <div style="font-family:var(--mono);font-size:18px;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);">01 · Detection</div>
+        <div style="background:var(--bg3);border:0.5px solid var(--border);border-radius:6px;height:360px;overflow:hidden;">
+          <img src="Media\TurkeyRobot\TurkeyRobot_Vision.png" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <p style="font-family:var(--mono);font-size:16px;color:var(--text2);margin:0;line-height:1.5;">Custom YOLO model for real-time people and turkey detection. Bounding box geometry used to estimate target distance from the robot's point of view.</p>
+      </div>
+
+      <!-- ↑ arrow (Detection ↑ Mapping) -->
+      <div style="display:flex;align-items:center;justify-content:center;">
+        <div style="display:flex;align-items:center;">
+          <div style="width:28px;height:2px;background:var(--teal-dim);"></div>
+          <div style="width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:10px solid var(--teal);"></div>
+        </div>
+      </div>
+
+      <!-- 02 · MAPPING (top-right) -->
+      <div style="background:var(--bg2);border:0.5px solid var(--border2);border-radius:8px;padding:1.25rem;display:flex;flex-direction:column;gap:0.75rem;">
+        <div style="font-family:var(--mono);font-size:18px;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);">02 · Mapping</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;height:360px;">
+          <div style="background:var(--bg3);border:0.5px solid var(--border);border-radius:6px;overflow:hidden;">
+            <img src="Media\TurkeyRobot\TurkeyRobot_OriginalMap.png" style="width:100%;height:100%;">
+          </div>
+          <div style="background:var(--bg3);border:0.5px solid var(--border);border-radius:6px;overflow:hidden;">
+            <img src="Media\TurkeyRobot\TurkeyRobot_CSVMap.png" style="width:100%;height:100%">
+          </div>
+        </div>
+        <p style="font-family:var(--mono);font-size:16px;color:var(--text2);margin:0;line-height:1.5;">Satellite field boundary converted to a CSV occupancy costmap. Static obstacles are shown in black on the grid for collision-aware path planning.</p>
+      </div>
+
+      <!-- → arrow (Actuation ↑ Detection) -->
+      <div style="display:flex;align-items:center;justify-content:center;">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:10px solid var(--teal);"></div>
+          <div style="width:2px;height:28px;background:var(--teal-dim);"></div>
+        </div>
+      </div>
+
+      <!-- center cell (empty) -->
+      <div></div>
+
+      <!-- ↓ arrow (Mapping ↑ Navigation) -->
+      <div style="display:flex;align-items:center;justify-content:center;">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="width:2px;height:28px;background:var(--teal-dim);"></div>
+          <div style="width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:10px solid var(--teal);"></div>
+        </div>
+      </div>
+
+      <!-- 04 · ACTUATION (bottom-left) -->
+      <div style="background:var(--bg2);border:0.5px solid var(--border2);border-radius:8px;padding:1.25rem;display:flex;flex-direction:column;gap:0.75rem;">
+        <div style="font-family:var(--mono);font-size:18px;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);">04 · Actuation</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;height:360px;">
+          <div style="background:var(--bg3);border:0.5px solid var(--border);border-radius:6px;overflow:hidden;">
+            <video src="Media\TurkeyRobot\TurkeyRobot_FieldDrivingDemo.mp4" controls style="width:100%;height:100%;"></video>
+          </div>
+          <div style="background:var(--bg3);border:0.5px solid var(--border);border-radius:6px;overflow:hidden;">
+            <video src="Media\TurkeyRobot\TurkeyRobot_BarkingDemo.mp4" controls style="width:100%;height:100%;"></video>
+          </div>
+        </div>
+        <p style="font-family:var(--mono);font-size:16px;color:var(--text2);margin:0;line-height:1.5;">Skid-steer drivetrain commanded via MPC velocity outputs. Canine gestures driven by synchronized servo commands, with audio deterrence from onboard speakers.</p>
+      </div>
+
+      <!-- ← arrow (Navigation ↑ Actuation) -->
+      <div style="display:flex;align-items:center;justify-content:center;">
+        <div style="display:flex;align-items:center;">
+          <div style="width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-right:10px solid var(--teal);"></div>
+          <div style="width:28px;height:2px;background:var(--teal-dim);"></div>
+        </div>
+      </div>
+
+      <!-- 03 · NAVIGATION (bottom-right) -->
+      <div style="background:var(--bg2);border:0.5px solid var(--border2);border-radius:8px;padding:1.25rem;display:flex;flex-direction:column;gap:0.75rem;">
+        <div style="font-family:var(--mono);font-size:18px;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);">03 · Navigation</div>
+        <div style="background:var(--bg3);border:0.5px solid var(--border);border-radius:6px;height:360px;overflow:hidden;">
+          <img src="Media\TurkeyRobot\TurkeyRobot_AstarAlg.png" style="width:100%;height:100%;">
+        </div>
+        <p style="font-family:var(--mono);font-size:16px;color:var(--text2);margin:0;line-height:1.5;">A* path planning over the costmap generates a reference path. An MPC trajectory optimizer follows this reference, enforcing velocity and constraint boundaries.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OPERATOR UI -->
+  <div class="blog-section">
+    <div class="eyebrow">User interface</div>
+    <h2 class="section-h">Wireless interface for real-time debugging and validation</h2>
+    <p class="body-text">Early in development it was clear that debugging a system this complex in the field would be unmanageable from a terminal alone. I built a custom operator UI using an HTML/CSS/JS stack, served over WiFi via ESP32 broadcast mode, giving the field operator a full live view of robot state without needing a direct connection.</p>
+    <!-- Unified UI card -->
+    <div style="background:var(--bg2);border:0.5px solid var(--border2);border-radius:8px;overflow:hidden;margin:1.5rem 0 0;">
+
+      <!-- Screenshot -->
+      <div style="border-bottom:0.5px solid var(--border);">
+        <img src="Media\TurkeyRobot\TurkeyRobot_UI_Screenshot.png" style="width:100%;">
+      </div>
+
+      <!-- 2x2 panel explanations mirroring the UI layout -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;">
+
+        <!-- Top-left -->
+        <div style="padding:1.25rem 1.4rem;border-right:0.5px solid var(--border);border-bottom:0.5px solid var(--border);display:flex;flex-direction:column;gap:0.7rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-family:var(--mono);font-size:16px;letter-spacing:0.06em;text-transform:uppercase;color:var(--teal);">Live Camera feed</span>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;width:18px;height:18px;flex-shrink:0;">
+              <div style="background:var(--teal);border-radius:1px;"></div>
+              <div style="background:var(--border2);border-radius:1px;"></div>
+              <div style="background:var(--border2);border-radius:1px;"></div>
+              <div style="background:var(--border2);border-radius:1px;"></div>
+            </div>
+          </div>
+          <p style="font-size:17px;color:var(--text2);margin:0;line-height:1.6;">YOLOv8 detections overlaid on live camera feed, showing both human and turkey bounding boxes and confidence scores. Built for visual debugging to see exactly what the robot sees.</p>
+        </div>
+
+        <!-- Top-right -->
+        <div style="padding:1.25rem 1.4rem;border-bottom:0.5px solid var(--border);display:flex;flex-direction:column;gap:0.7rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-family:var(--mono);font-size:16px;letter-spacing:0.06em;text-transform:uppercase;color:var(--teal);">Zone Map</span>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;width:18px;height:18px;flex-shrink:0;">
+              <div style="background:var(--border2);border-radius:1px;"></div>
+              <div style="background:var(--teal);border-radius:1px;"></div>
+              <div style="background:var(--border2);border-radius:1px;"></div>
+              <div style="background:var(--border2);border-radius:1px;"></div>
+            </div>
+          </div>
+          <p style="font-size:17px;color:var(--text2);margin:0;line-height:1.6;">Live zone map showing the robot's position, detected humans and turkeys, along with the active A* trajectory. Used for verifying localization accuracy and debugging path planning behavior in real time.</p>
+        </div>
+
+        <!-- Bottom-left -->
+        <div style="padding:1.25rem 1.4rem;border-right:0.5px solid var(--border);display:flex;flex-direction:column;gap:0.7rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-family:var(--mono);font-size:16px;letter-spacing:0.06em;text-transform:uppercase;color:var(--teal);">System Diagnostics</span>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;width:18px;height:18px;flex-shrink:0;">
+              <div style="background:var(--border2);border-radius:1px;"></div>
+              <div style="background:var(--border2);border-radius:1px;"></div>
+              <div style="background:var(--teal);border-radius:1px;"></div>
+              <div style="background:var(--border2);border-radius:1px;"></div>
+            </div>
+          </div>
+          <p style="font-size:17px;color:var(--text2);margin:0;line-height:1.6;">System diagnostics displaying drivetrain velocities, active behavior state, raw and UKF-fused sensor measurements, and current navigation target. Used to verify speed constraint enforcement and monitor sensor integrity in real time.</p>
+        </div>
+
+        <!-- Bottom-right -->
+        <div style="padding:1.25rem 1.4rem;display:flex;flex-direction:column;gap:0.7rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-family:var(--mono);font-size:16px;letter-spacing:0.06em;text-transform:uppercase;color:var(--teal);">Manual Controls</span>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;width:18px;height:18px;flex-shrink:0;">
+              <div style="background:var(--border2);border-radius:1px;"></div>
+              <div style="background:var(--border2);border-radius:1px;"></div>
+              <div style="background:var(--border2);border-radius:1px;"></div>
+              <div style="background:var(--teal);border-radius:1px;"></div>
+            </div>
+          </div>
+          <p style="font-size:17px;color:var(--text2);margin:0;line-height:1.6;">Manual control panel for operator override during field testing. Enables direct drivetrain control, servo position and gait triggering, audio sequence playback, and emergency stop. Critical for debugging across test scenarios in the field.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- DEMOS -->
+  <div class="blog-section">
+    <div class="eyebrow">System demos</div>
+    <h2 class="section-h", style="margin-bottom: 2.5rem;">From benchtop validation to scaring real turkeys in the field</h2>
+     <div style="background:var(--bg2);border:0.5px solid var(--border2);border-radius:8px;overflow:hidden;margin:1.25rem 0;display:flex;flex-direction:column;">
+
+      <div style="display:grid;">
+
+        <!-- Panel 1: Demo 01 -->
+        <div id="demo-panel-0" style="grid-row:1;grid-column:1;display:flex;flex-direction:column;gap:0.6rem;padding:1rem 1.25rem;visibility:visible;">
+          <div style="font-family:var(--mono);font-size:18px;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);">01 · Live Turkey Chase</div>
+          <p class="body-text" style="margin:0;">Took our robot 'Corndog' out on campus and scared off real turkeys. Running and barking routines in manual mode sent them bolting to the nearby woods.</p>
+          <div style="background:#000;border-radius:6px;overflow:hidden;height:580px;display:flex;align-items:center;">
+            <video src="Media\TurkeyRobot\TurkeyRobot_FieldManualDemo.mp4" controls style="width:100%;height:100%;object-fit:cover;display:block;"></video>
+          </div>
+        </div>
+
+        <!-- Panel 2: Demo 02 -->
+        <div id="demo-panel-1" style="grid-row:1;grid-column:1;display:flex;flex-direction:column;gap:0.6rem;padding:1rem 1.25rem;visibility:hidden;">
+          <div style="font-family:var(--mono);font-size:18px;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);">02 · Indoor Decoy Chase</div>
+          <p class="body-text" style="margin:0;">Full autonomous run in a controlled indoor environment with detection, path planning, and motor control all live. Preliminary validation before heading to the field.</p>
+          <div style="background:#000;border-radius:6px;overflow:hidden;height:580px;display:flex;align-items:center;">
+            <video src="Media\TurkeyRobot\TurkeyRobot_IndoorAutoDemo.mp4" controls style="width:100%;height:100%;object-fit:cover;display:block;"></video>
+          </div>
+        </div>
+
+        <!-- Panel 3: Demo 03 -->
+        <div id="demo-panel-2" style="grid-row:1;grid-column:1;display:flex;flex-direction:column;gap:0.6rem;padding:1rem 1.25rem;visibility:hidden;">
+          <div style="font-family:var(--mono);font-size:18px;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);">03 · Autonomous Driving</div>
+          <p class="body-text" style="margin:0;">Full autonomous operation in the outdoor deployment zone. The robot detects, localizes, plans a path, and drives to the target with no human input. Shown here running a scan routine to patrol the zone.</p>
+          <div style="background:#000;border-radius:6px;overflow:hidden;height:580px;display:flex;align-items:center;">
+            <video src="Media\TurkeyRobot\TurkeyRobot_AutoFieldMode.mp4" controls style="width:100%;height:100%;object-fit:cover;display:block;"></video>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Nav bar -->
+      <div style="display:flex;border-top:0.5px solid var(--border);">
+        <button id="demo-dot-0" onclick="demoGoTo(0)" class="carousel-tab" style="color:var(--teal);background:var(--teal-bg);">01 · Live Turkey Chase</button>
+        <button id="demo-dot-1" onclick="demoGoTo(1)" class="carousel-tab">02 · Indoor Decoy Chase</button>
+        <button id="demo-dot-2" onclick="demoGoTo(2)" class="carousel-tab">03 · Autonomous Driving</button>
+      </div>
+    </div>
+
+    <script>
+      var demoIdx = 0;
+      function demoGoTo(n) {
+        var prev = document.getElementById('demo-dot-' + demoIdx);
+        prev.style.color = 'var(--text2)';
+        prev.style.background = 'none';
+        document.getElementById('demo-panel-' + demoIdx).style.visibility = 'hidden';
+        demoIdx = n;
+        document.getElementById('demo-panel-' + demoIdx).style.visibility = 'visible';
+        var next = document.getElementById('demo-dot-' + demoIdx);
+        next.style.color = 'var(--teal)';
+        next.style.background = 'var(--teal-bg)';
+      }
+    </script>
+  </div>
+
+  <!-- MPC DEEP DIVE -->
+  <div class="blog-section">
+    <div class="eyebrow", style="margin-top: 4rem;">Technical dive: Navigation</div>
+    <h2 class="section-h">Trajectory optimization and obstacle avoidance with MPC</h2>
+    <p class="body-text">The navigation stack runs in three layers. A* finds a globally optimal path through a precomputed occupancy grid, linear interpolation turns the discrete waypoints into a smooth reference trajectory at 10 Hz, and corridor MPC tracks it while enforcing hard speed and obstacle constraints in real time. MPC over simpler alternatives like PID or pure pursuit came down to one requirement: constraint enforcement. Speed limits near humans couldn't be reactive, and collision avoidance needed to be guaranteed by the solver, not hoped for at runtime.</p>
+
+    <!-- Navigation pipeline -->
+    <div style="margin:1.5rem 0 0;">
+      <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;background:var(--bg3);border:0.5px solid var(--border);border-radius:8px 8px 0 0;padding:1.25rem 1.75rem;">
+        <div style="text-align:center;">
+          <div style="font-size:18px;color:var(--text);font-weight:500;">A* Path Planning</div>
+        </div>
+        <div style="font-size:20px;color:var(--teal-dim);padding:0 1.25rem;">&#8594;</div>
+        <div style="text-align:center;">
+          <div style="font-size:18px;color:var(--text);font-weight:500;">Linear Interpolation</div>
+        </div>
+        <div style="font-size:20px;color:var(--teal-dim);padding:0 1.25rem;">&#8594;</div>
+        <div style="text-align:center;">
+          <div style="font-size:18px;color:var(--text);font-weight:500;">Corridor MPC</div>
+        </div>
+      </div>
+      <div style="background:var(--bg2);border:0.5px solid var(--border);border-top:none;border-radius:0 0 8px 8px;padding:1rem 1.75rem;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:0;">
+        <p style="font-size:15px;color:var(--text2);margin:0;line-height:1.65;">A* with an EDT map where each cell is penalized based on distance to nearest obstacle. Open-space paths cost less than wall-hugging ones, so the planner routes with natural clearance.</p>
+        <div style="font-size:20px;padding:0 1.25rem;visibility:hidden;">&#8594;</div>
+        <p style="font-size:15px;color:var(--text2);margin:0;line-height:1.65;">A* outputs discrete waypoints so interpolation is added to produce a continuous reference trajectory at each \(\Delta t\) step, giving MPC a well-defined tracking target across the full prediction horizon.</p>
+        <div style="font-size:20px;padding:0 1.25rem;visibility:hidden;">&#8594;</div>
+        <p style="font-size:15px;color:var(--text2);margin:0;line-height:1.65;">MPC uses cost formulation to look \(N\) steps ahead and encode obstacle-free regions as soft linear constraints per timestep. Combined with a warm-start strategy, it runs at 10 Hz on a Pi 5.</p>
+      </div>
+    </div>
+
+    <!-- Cost formulation -->
+    <div style="margin:1.5rem 0;">
+      <div style="font-family:var(--mono);font-size:16px;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem;">Cost formulation</div>
+
+      <p class="body-text" style="margin-bottom:1.75rem;">At each timestep, the solver finds the wheel speed sequence that minimizes tracking error and speed deviation while keeping the robot inside an obstacle-free corridor by construction. The full formulation runs at 10Hz on a Raspberry Pi 5 using CasADi/IPOPT with a 10-step prediction horizon.</p>
+
+      <!-- Equation block -->
+      <div style="background:var(--bg3);border:0.5px solid var(--border);border-radius:8px;padding:2.5rem 3rem;margin-bottom:1.25rem;overflow-x:auto;color:var(--text);">
+        <div style="text-align:center;padding-bottom:1.5rem;">
+          $$J = \sum_{k=0}^{N-1} \Bigl[ (x_k - x_{r,k})^\top \textcolor{#2dd4bf}{\mathbf{Q}}\,(x_k - x_{r,k}) + (u_k - u_{r,k})^\top \textcolor{#2dd4bf}{\mathbf{R}}\,(u_k - u_{r,k}) \Bigr]$$
+        </div>
+        <div style="border-top:0.5px solid var(--border);padding-top:1.25rem;">
+          $$\begin{aligned} \text{where} \quad & x_k = [x,\; y,\; \theta]^\top \quad \text{(pose)} \\[4pt] & u_k = [v_L,\; v_R]^\top \quad \text{(wheel speeds)} \\[14pt] \text{s.t.} \quad & x_{k+1} = f(x_k,\,u_k) \\[6pt] & {-3} \leq v_L,\,v_R \leq 3\;\text{m/s} \\[6pt] & \textcolor{#2dd4bf}{\mathbf{A}}_k\,x_{k+1} \leq \textcolor{#2dd4bf}{\mathbf{b}}_k + \varepsilon, \quad k = 0,\ldots,N{-}1 \end{aligned}$$
+        </div>
+      </div>
+
+      <!-- Annotation cards -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;">
+
+        <div style="background:var(--bg3);border:0.5px solid var(--border);border-top:3px solid var(--teal);border-radius:0 0 8px 8px;padding:1.25rem 1.4rem;">
+          <div style="font-family:var(--mono);font-size:14px;color:var(--teal);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.6rem;">Track position</div>
+          <div style="margin-bottom:0.85rem;font-size:1.15em;">\((x_k - x_{r,k})^\top \textcolor{#2dd4bf}{\mathbf{Q}}\,(x_k - x_{r,k})\)</div>
+          <p style="font-size:17px;color:var(--text2);margin:0;line-height:1.65;">Penalizes deviation from the A* reference path. Heading error is weighted more heavily to maintain visual contact with the turkey during active pursuit.</p>
+        </div>
+
+        <div style="background:var(--bg3);border:0.5px solid var(--border);border-top:3px solid var(--teal);border-radius:0 0 8px 8px;padding:1.25rem 1.4rem;">
+          <div style="font-family:var(--mono);font-size:14px;color:var(--teal);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.6rem;">Match speed</div>
+          <div style="margin-bottom:0.85rem;font-size:1.15em;">\((u_k - u_{r,k})^\top \textcolor{#2dd4bf}{\mathbf{R}}\,(u_k - u_{r,k})\)</div>
+          <p style="font-size:17px;color:var(--text2);margin:0;line-height:1.65;">Penalizes deviation from reference wheel speeds. Weighted low to prioritize pursuit speed while still allowing deviations for smooth turning and fluid movement when needed.</p>
+        </div>
+
+        <div style="background:var(--bg3);border:0.5px solid var(--border);border-top:3px solid var(--teal);border-radius:0 0 8px 8px;padding:1.25rem 1.4rem;">
+          <div style="font-family:var(--mono);font-size:14px;color:var(--teal);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.6rem;">Stay obstacle-free</div>
+          <div style="margin-bottom:0.85rem;font-size:1.15em;">\(\textcolor{#2dd4bf}{\mathbf{A}}_k\,x_{k+1} \leq \textcolor{#2dd4bf}{\mathbf{b}}_k + \varepsilon\)</div>
+          <p style="font-size:17px;color:var(--text2);margin:0;line-height:1.65;">Half-plane constraints keep every predicted state inside a convex corridor grown obstacle-free around the path. Slack \(\varepsilon\) prevents deadlock when transitioning between corridors.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Corridor construction -->
+    <div style="margin:1.5rem 0;">
+      <div style="font-family:var(--mono);font-size:16px;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem;">Corridor construction</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;align-items:start;">
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          <div style="background:white;border:0.5px solid var(--border);border-radius:8px;overflow:hidden;">
+            <img src="Media\TurkeyRobot\TurkeyRobot_CorridorDiagram.png" style="width:100%;height:auto;display:block;">
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <p style="font-size:19px;color:var(--text2);line-height:1.8;margin:0;">Each A* path segment generates one rectangular corridor: four half-plane constraints oriented perpendicular and along to the segment direction. The corridor expands outward until it hits an obstacle or reaches 0.5 m maximum half-width. Slack variables prevent deadlock in transition areas. This sidesteps the general MPC obstacle problem entirely. Instead of encoding every obstacle cell across the horizon, the solver sees only four linear inequalities per timestep, cheap to evaluate but also effective in preventing collisions.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Simulation results -->
+    <div style="margin:1.5rem 0;">
+      <div style="font-family:var(--mono);font-size:16px;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem;">Simulation results</div>
+      <p class="body-text" style="margin-bottom:1.25rem;">Algorithmic performance was verified by selecting arbitrary start and end locations within the operating zone and plotting them in MATLAB. Visual inspection was used to determine whether the trajectories were satisfactory, with parameters tuned accordingly. This included adjusting corridor widths and time horizons to optimize for both fast response and robustness. Corridors that are too narrow risk potential deadlock, while corridors that are too wide may deviate too far from the reference path. Below are two plots showing the final algorithm in action.</p>
+
+      <!-- Corridor plots: two images, unified caption -->
+      <div style="margin:0 0 0.6rem;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
+          <div style="border:0.5px solid var(--border);border-radius:8px;overflow:hidden;background:var(--bg2);">
+            <img src="Media\TurkeyRobot\TurkeyRobot_MPC_CorridorsV2.png" style="width:100%;height:550px;object-fit:cover;display:block;">
+          </div>
+          <div style="border:0.5px solid var(--border);border-radius:8px;overflow:hidden;background:var(--bg2);">
+            <img src="Media\TurkeyRobot\TurkeyRobot_MPC_CorridorsV2ZOOMED.png" style="width:100%;height:550px;object-fit:cover;display:block;">
+          </div>
+        </div>
+      </div>
+      <p class="body-text" style="margin-bottom:3.5rem;">The left plot shows the robot navigating from start (green) to end (red) while avoiding obstacles. The right plot is a close-up where the A* reference path, generated corridors, and MPC trajectory can be more easily observed.</p>
+
+      <!-- MPC demo: corridor-construction format -->
+      <div style="font-family:var(--mono);font-size:16px;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);margin-bottom:1rem;">user Interface Integration</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;align-items:start;">
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <p style="font-size:19px;color:var(--text2);line-height:1.8;margin:0;">On the right is a video of the user interface, with the robot represented as a blue arrow chasing a turkey represented by the orange square. The turkey's movement is simulated here via keyboard input while maneuvering around the map. The robot autonomously tracks the turkey through various obstacles, successfully navigating tight spaces and passageways that would otherwise risk collision.</p>
+          <p style="font-size:19px;color:var(--text2);line-height:1.8;margin-top: 2rem;">Overall, the navigation stack was the most technically rewarding part of the project. I found something genuinely exciting about being faced with what initially seemed an intractable problem, balancing obstacle avoidance with real-time constraints, and working through the literature to build a solution tailored to this specific use case. It is an area I would love to explore further, particularly in deepening my understanding of MPC and autonomous navigation more broadly.</p>
+        </div>
+        <div style="background:#000;border-radius:8px;overflow:hidden;">
+          <video src="Media\TurkeyRobot\TurkeyRobot_MPC_Demo.mp4" controls style="width:100%;display:block;"></video>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- REFLECTION -->
+  <div class="blog-section">
+    <div class="eyebrow">Reflection</div>
+    <h2 class="section-h">Executing with a clear compass</h2>
+    <p class="body-text">Robotics wasn't my background coming in. Navigation, localization, autonomous behavior on real hardware were all new concepts. Breaking down something hard, finding what actually needs to be built, and iterating until it works. That's a pattern I'd developed long before this project. At the end, watching everything work on real hardware against real targets made the effort feel earned. It pointed me toward the kind of engineering I want to center my career around. My graduate school work will be focused on optimal control, trajectory optimization, and estimation to build the theoretical depth to match what I learned empirically here. Next up is quadrotor GNC and flight software for a real University of Michigan CubeSat mission. I may be retired from Corndog, but the line of work it pointed me toward is just getting started.</p>
+  </div>
+
+  <!-- BEHIND THE BUILD -->
+  <div class="blog-section">
+    <div class="eyebrow">Behind the build</div>
+
+    <!-- Build photos: 2x2 grid -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+
+      <div style="display:flex;flex-direction:column;gap:0.5rem;">
+        <div style="height:340px;border-radius:8px;border:0.5px solid var(--border);overflow:hidden;">
+          <img src="Media\TurkeyRobot\TurkeyRobot_MechanicalAssembly.png" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+        </div>
+        <div style="text-align:center;font-family:var(--mono);font-size:14px;color:var(--teal);letter-spacing:0.04em;">Teammates assembling the dog and drivetrain</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:0.5rem;">
+        <div style="height:340px;border-radius:8px;border:0.5px solid var(--border);overflow:hidden;">
+          <img src="Media\TurkeyRobot\TurkeyRobot_BenchtopTesting.png" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+        </div>
+        <div style="text-align:center;font-family:var(--mono);font-size:14px;color:var(--teal);letter-spacing:0.04em;">Early integration testing, monitor from home and all</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:0.5rem;">
+        <div style="height:340px;border-radius:8px;border:0.5px solid var(--border);overflow:hidden;">
+          <img src="Media\TurkeyRobot\TurkeyRobot_DrivetrainPrototype.png" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+        </div>
+        <div style="text-align:center;font-family:var(--mono);font-size:14px;color:var(--teal);letter-spacing:0.04em;">Drivetrain prototype to test UI and motor drivers</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:0.5rem;">
+        <div style="height:340px;border-radius:8px;border:0.5px solid var(--border);overflow:hidden;">
+          <img src="Media\TurkeyRobot\TurkeyRobot_TurkeyShoes.png" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+        </div>
+        <div style="text-align:center;font-family:var(--mono);font-size:14px;color:var(--teal);letter-spacing:0.04em;">"Turkey Shoes"</div>
+      </div>
+
+    </div>
+
+    <!-- Team photos: asymmetric 2-column -->
+    <div style="display:grid;grid-template-columns:1fr 1.7fr;gap:1rem;">
+
+      <div style="display:flex;flex-direction:column;gap:0.5rem;">
+        <div style="height:300px;border-radius:8px;border:0.5px solid var(--border);overflow:hidden;">
+          <img src="Media\TurkeyRobot\TurkeyRobot_Subteamphoto.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+        </div>
+        <div style="text-align:center;font-family:var(--mono);font-size:14px;color:var(--teal);letter-spacing:0.04em;">Controls & Vision Subteam</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:0.5rem;">
+        <div style="height:300px;border-radius:8px;border:0.5px solid var(--border);overflow:hidden;">
+          <img src="Media\TurkeyRobot\TurkeyRobot_TeamPhoto.png" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+        </div>
+        <div style="text-align:center;font-family:var(--mono);font-size:14px;color:var(--teal);letter-spacing:0.04em;">All three subteams and mentoring professor</div>
+      </div>
+
+    </div>
+  </div>
+
+
+</div>
+</div><!-- /turkey -->
+
+
+<!-- ════════════════ INCUBATOR ════════════════ -->
+<div class="view" id="view-incubator">
+<div class="detail" style="max-width:var(--max);">
+
+  <button class="back-btn" onclick="go('home',document.querySelectorAll('.nav-tab')[0])">
+    <i class="ti ti-arrow-left" aria-hidden="true"></i> Home
+  </button>
+
+  <div class="hero-media">
+    <img src="Media\Incubator\Incubator_Hero.png" alt="Final incubator enclosure open from side">
+  </div>
+
+  <!-- HEADER -->
+  <div style="margin-bottom:1.25rem;">
+    <h1 class="detail-title">Custom Live Cell Incubator</h1>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:0.65rem;flex-wrap:wrap;gap:0.75rem;">
+      <div class="detail-role">Project Lead · Controls &amp; Software</div>
+    </div>
+  </div>
+  <div style="border-bottom:0.5px solid var(--border);margin-bottom:1.75rem;"></div>
+  
+  <!-- METRICS -->
+  <div class="metrics">
+    <div class="mcard"><div class="mcard-val">Sartorius</div><div class="mcard-key">Company Sponsor</div></div>
+    <div class="mcard"><div class="mcard-val">8 Months</div><div class="mcard-key">Active Build Time</div></div>
+    <div class="mcard"><div class="mcard-val">On-Site Demo</div><div class="mcard-key">At Sartorius Location</div></div>
+    <div class="mcard"><div class="mcard-val">62% Faster</div><div class="mcard-key">Actuator Response</div></div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="blog-section">
+    <div class="eyebrow">Project Overview</div>
+    <h2 class="section-h">A custom incubator built from scratch for Sartorius</h2>
+    <p class="body-text">Sartorius sponsored a custom live cell incubator to hold 37°C ±0.5 and above 90% relative humidity through long-duration cell culture runs, with no prior team's notes or known-good design to build from. Eight months, $13K, and nine vendors, from PCB fab down to McMaster and Adafruit for one-off parts. I led a six-person team and owned controls and software myself: the Raspberry Pi stack, the STM32 serial protocol, the operator interface, and a full firmware simulator.</p>
+    <div style="margin-top:1.5rem;">
+      <div style="border:0.5px solid var(--border);border-radius:8px;overflow:hidden;height:460px;">
+        <img src="Media\Incubator\Incubator_ElectronicsCloseup.png" alt="Final incubator interior" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+      </div>
+      <p class="body-text" style="margin:0.6rem 0 0;">Final enclosure: every sensor, actuator, and PCB spec'd, sourced, and integrated from scratch</p>
+    </div>
+  </div>
+
+  <!-- MY ROLE -->
+  <div class="blog-section">
+    <div class="eyebrow">My Role</div>
+    <h2 class="section-h">Leading a six-person team while owning the software myself</h2>
+    <p class="body-text">I led a six-person team split into controls &amp; software, embedded, and mechanical subteams: a real PCB needed its own embedded subteam, fast mechanical iteration needed its own, and I wanted to own software myself. A Gantt chart stayed in front of the team throughout and was the first signal when the mechanical subteam started falling behind. At close, I left a handoff document, walked the incoming cohort through the system, and wrote up recommendations for where to take it next.</p>
+    <p class="body-text">On the technical side I owned the Raspberry Pi control stack, the firmware simulator, and the operator and researcher UIs. Control itself is deliberately simple: on-off switching against the setpoint with a hysteresis band tuned empirically on hardware, using the average of all ten sensor readings as the signal. It's the same approach production incubators and ovens use for slow thermal plants, where the real engineering is characterizing the plant well enough to pick that band. The STM32 protocol went through one rewrite: the first version used WebSocket-based JSON, which worked for me but was hard for Embedded to implement, so I switched to a fixed 5-byte format (command ID, device ID, and the command itself) that was much easier to build against.</p>
+  </div>
+
+  <!-- SPENDING EARLY, TWICE -->
+  <div class="blog-section">
+    <div class="eyebrow">Spending early</div>
+    <h2 class="section-h">Prototyping and simulating the hardware before it existed</h2>
+    <p class="body-text">Before committing $13K and a full semester to real hardware, I built a $300 cardboard enclosure with off-the-shelf actuators to answer one question: could we control this environment at all? It told us what no simulation could: real thermal leakage behavior and workable sensor placement. It also exposed a flaw in the humidity actuator we'd planned around, ultrasonic atomizers with unreliable output and a wicking straw that kept drying out mid-run. I scrapped them mid-project for resistive heat pads, redesigned the mechanicals, and re-characterized the plant myself. The replacement reached setpoint 62% faster and is the reason we hit the humidity spec at all.</p>
+
+    <div style="margin-top:1.5rem;border:0.5px solid var(--border);border-radius:8px;overflow:hidden;">
+      <img src="Media\Incubator\Incubator_DumbBox.png" alt="Cardboard testbed interior" style="width:100%;display:block;">
+    </div>
+    <p class="body-text" style="margin:0.6rem 0 0;">The testbed interior: off-the-shelf fans and heat pads, wired up to prove the environment could be controlled at all</p>
+
+    <p class="body-text" style="margin-top:1.5rem;">The PCB was the other early risk I didn't want to wait on. I wrote a simulator that spoke the same Raspberry Pi to STM32 protocol over a virtual serial port, indistinguishable to the Pi stack from the real board. It didn't reimplement the STM32's firmware logic, just matched the message format and timing closely enough for the control stack, both UIs, and the automation layer to develop in parallel with hardware. A week building that stand-in bought roughly five months of parallel development; when the real board arrived, integration took hours.</p>
+  </div>
+
+  <!-- OPERATOR UI -->
+  <div class="blog-section">
+    <div class="eyebrow">User Interface</div>
+    <h2 class="section-h">A wireless operator UI for live setpoint control and sensor data</h2>
+    <p class="body-text">Running an experiment originally meant sitting at a terminal watching numbers scroll. I built an operator UI for live setpoint control and real-time readings across all ten sensors, plus start and stop over the network, so an experiment didn't need someone watching it end to end. That made a 150-minute unattended run possible and let other experiments run entirely remotely, without my laptop in the loop. A researcher view and a device-mounted display share the same backend state.</p>
+    <div style="margin-top:1.5rem;border:0.5px solid var(--border);border-radius:8px;overflow:hidden;background:var(--bg3);">
+      <img src="Media\Incubator\Incubator_UI_Screenshot.png" alt="Operator UI" style="width:100%;height:auto;display:block;">
+    </div>
+    <p class="body-text" style="margin:0.6rem 0 0;">The operator interface: live setpoint control and every sensor reading on one screen</p>
+  </div>
+
+  <!-- RESULT -->
+  <div class="blog-section">
+    <div class="eyebrow">What it came out to</div>
+    <h2 class="section-h">Both specs held, though the enclosure leak was never fully solved</h2>
+    <p class="body-text">Sartorius specified a 37°C setpoint with ±0.5°C steady-state tolerance and a humidity floor above 90% RH for cell viability. We hit both, though not always as consistently as we wanted: the enclosure leaked, so temperature control was always fighting a thermal load different from the one on paper. We identified the leak but didn't have time to fully solve it, leaving it as a known issue for the next cohort. Humidity held once the heat pads reached setpoint 62% faster than the atomizers ever had.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-top:1.25rem;">
+      <div style="border:0.5px solid var(--border);border-radius:8px;overflow:hidden;background:var(--bg3);aspect-ratio:1.234/1;">
+        <img src="Media\Incubator\Incubator_TemperatureGraph.png" alt="Temperature response" style="width:100%;height:100%;display:block;object-fit:contain;filter:invert(1) hue-rotate(180deg) url(#plot-darkbg);">
+      </div>
+      <div style="border:0.5px solid var(--border);border-radius:8px;overflow:hidden;background:var(--bg3);aspect-ratio:1.234/1;">
+        <img src="Media\Incubator\Incubator_HumidityGraph_scaled.png" alt="Humidity response" style="width:100%;height:100%;display:block;object-fit:contain;filter:invert(1) hue-rotate(180deg) url(#plot-darkbg);">
+      </div>
+    </div>
+    <p class="body-text" style="margin:0.75rem 0 1.5rem;">Left: temperature settled within Sartorius spec and held. Right: heat pads reached setpoint 62% faster than the atomizer baseline and held above the 90% RH floor.</p>
+
+    <p class="body-text">We closed one week ahead of an already-compressed deadline with a working prototype, full documentation, a validation dataset, and a walkthrough for the incoming cohort. The goal was never a perfect result in eight months, it was proving the environment could be built and controlled at all, and leaving the next team a real foundation to build on.</p>
+  </div>
+
+  <!-- REFLECTION -->
+  <div class="blog-section">
+    <div class="eyebrow">Reflection</div>
+    <h2 class="section-h">Learning to move quickly without moving carelessly</h2>
+    <p class="body-text">This project taught me to move quickly and stay a step ahead: testing for problems before they happened instead of reacting to them after the fact. That meant staying proactive with the team, honest about what wasn't working, and willing to move fast without cutting corners. I came out of it owning my work at a higher level, both technically and as a leader.</p>
+    <div style="margin-top:1.5rem;">
+      <div style="border:0.5px solid var(--border);border-radius:8px;overflow:hidden;">
+        <img src="Media\Incubator\Incubator_SponsorTeamPhoto.png" alt="Team with Sartorius sponsor" style="width:100%;height:auto;display:block;">
+      </div>
+      <p class="body-text" style="margin:0.6rem 0 0;">The team with our Sartorius sponsors at final presentation</p>
+    </div>
+  </div>
+
+</div>
+</div><!-- /incubator -->
+
+
+<!-- ════════════════ LINKAGE ════════════════ -->
+<div class="view" id="view-linkage">
+<div class="detail" style="max-width:var(--max);">
+  <button class="back-btn" onclick="go('home',document.querySelectorAll('.nav-tab')[0])">
+    <i class="ti ti-arrow-left" aria-hidden="true"></i> Home
+  </button>
+
+  <div class="hero-media">
+    <video src="Media\Linkage\Linkage_Demo.mp4" controls style="width:100%;height:100%;object-fit:contain;border-radius:10px;background:#000;"></video>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;margin-top:1.25rem;margin-bottom:2rem;">
+    <h1 class="detail-title" style="margin-bottom:0;">Precision Linkage Control</h1>
+    <a href="Media\Linkage\ME350 WN24 Final Report Team 51.pdf" target="_blank" class="btn-link">↗ Final Report</a>
+  </div>
+
+  <div class="blog-section">
+    <div class="eyebrow">Project Overview</div>
+    <h2 class="section-h">Aiming a beam of light at a set of fixed targets</h2>
+    <p class="body-text">Built for ME350 (Mechatronics), this was a five-person team project: design, build, and control a linkage mechanism to aim a beam of light at a series of fixed targets. Teams were scored on hits within a time cap, with weight and torque efficiency as tiebreakers. We hit every target and placed first. The sections below cover the mechanical design, the dynamics simulation that shaped it, and the control system that aimed it.</p>
+  </div>
+
+  <div class="blog-section">
+    <div class="eyebrow">Mechanical design</div>
+    <h2 class="section-h">Designing and optimizing the link geometry</h2>
+    <p class="body-text">Each of the five of us modeled a candidate linkage in SolidWorks, scored against nine weighted criteria from transmission angle deviation to manufacturability. Landing on a design took a lot of trial and error: sketching the transmission and follower links in 2D against the fixed target positions and iterating link lengths and pivot placement until the geometry held a good transmission angle without needing longer links to reach every target. My link lengths and placement were the ones that made it into the final design, integrated with the rest of assembly by the team.</p>
+    <div class="two-up" style="margin-top:1.25rem;">
+      <div class="img-block" style="margin:0;">
+        <div class="img-inner">
+          <img src="Media\Linkage\Linkage_DesignOptimization.png" alt="Link geometry and inertia measurements diagram" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;">
+        </div>
+        <div class="img-caption">Link positions to hit targets (R1-R5)</div>
+      </div>
+      <div class="img-block" style="margin:0;">
+        <div class="img-inner">
+          <img src="Media\Linkage\Linkage_CAD.png" alt="SolidWorks CAD assembly" style="width:100%;height:100%;object-fit:contain;padding:0.5rem;">
+        </div>
+        <div class="img-caption">Final SolidWorks CAD assembly</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-section">
+    <div class="eyebrow">Dynamic simulation</div>
+    <h2 class="section-h">Validating motion in simulation before fabrication</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;align-items:start;margin-top:1.25rem;">
+      <p class="body-text" style="margin:0;">Before cutting hardware, the full assembly went into MSC ADAMS for multibody simulation, shown at right. Driving it with a matching acceleration profile verified the motion path and produced torque and power curves at the input link, which we used to size the gear transmission and check every joint against failure with margin to spare. That simulation also set the 0.47 s move-time budget the motor and gearing had to hit.</p>
+      <div class="img-block" style="margin:0;">
+        <img src="Media\Linkage\Linkage_ADAMS_Model.png" alt="ADAMS dynamic simulation" style="width:100%;height:auto;display:block;">
+        <div class="img-caption">Imported the SolidWorks model into ADAMS, then added links and joints to simulate kinematic and dynamic performance</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-section">
+    <div class="eyebrow">Electronics & control</div>
+    <h2 class="section-h">Closing the control loop from sensors to target</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;align-items:start;margin-top:1.25rem;">
+      <div>
+        <p class="body-text">An Arduino Uno drives a DC motor through a gear transmission and H-bridge, while two IR sensors detect which targets are raised. A PID position loop then drives the flashlight to each target's calibrated encoder count and holds it there, with a limit switch homing the system at startup and a toggle switch arming the run.</p>
+        <p class="body-text" style="margin-bottom:0;">Two fixes mattered most. The base logic defaulted to the nearest active target, which could send it oscillating between two that came up together, so we reprioritized to nearest-first and cut wasted travel. The rest came down to iterative PID tuning: adjusting gains, watching the response, and repeating until it braked in cleanly without overshoot.</p>
+      </div>
+      <div class="img-block" style="margin:0;">
+        <img src="Media\Linkage\Linkage_WireDiagram_Alt.png" alt="Control system schematic" style="width:100%;height:auto;display:block;">
+        <div class="img-caption">Control schematic: Arduino Uno, H-bridge, IR proximity sensors, limit switch</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div><!-- /linkage -->
+
+
+<!-- ════════════════ MOTIONPAINT ════════════════ -->
+<div class="view" id="view-motionpaint">
+<div class="detail" style="max-width:var(--max);">
+  <button class="back-btn" onclick="go('home',document.querySelectorAll('.nav-tab')[0])">
+    <i class="ti ti-arrow-left" aria-hidden="true"></i> Home
+  </button>
+
+  <div class="hero-media">
+    <img src="Media\MotionPaint\MotionPaint_OverallSystem.png" alt="MotionPaint full system: LED grid, IR camera, and wearable glove" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;">
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;margin-top:1.25rem;margin-bottom:2rem;">
+    <h1 class="detail-title" style="margin-bottom:0;">MotionPaint</h1>
+    <a href="https://github.com/BradyButen/MotionPaint" target="_blank" class="btn-link">↗ Github</a>
+  </div>
+
+  <div class="blog-section">
+    <div class="eyebrow">Overview</div>
+    <h2 class="section-h">A gesture-controlled wireless memory game</h2>
+    <p class="body-text">Built for EECS 373 (Embedded Systems) with one other teammate, this is a Simon-says-style memory game: one of six positions in a 3x2 LED grid lights up, the player repeats it by pointing, and each round adds one more position. It runs across a wearable hub and a camera-equipped base station linked by a wireless protocol I designed, and I owned the system end to end. The full loop ran live end to end: sequence display, gesture tracking, and scoring. The sections below cover the wireless link and sensor fusion, the camera calibration, and the game logic driving it.</p>
+  </div>
+
+  <div class="blog-section">
+    <div class="eyebrow">Wearable node &amp; wireless link</div>
+    <h2 class="section-h">Reconciling two hand sensors into one shared frame</h2>
+    <p class="body-text">The wearable is a single STM32 worn on the body, reading two hand-mounted accelerometers and driving a haptic buzzer that confirms a correct gesture. It talks wirelessly to a second STM32 at the base station. XBee only gives you wireless UART, so I designed the protocol on top of it myself, deciding what every byte meant. Since the two accelerometers sit at different orientations, raw readings get reconciled into a shared frame before each gesture is classified and sent across.</p>
+    <div class="two-up" style="margin-top:1.25rem;">
+      <div class="img-block" style="margin:0;">
+        <div class="img-inner" style="height:280px;">
+          <img src="Media\MotionPaint\Wearable_Testing.png" alt="Both gloves worn during a live test round" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+        </div>
+        <div class="img-caption">Both gloves worn mid-round, streaming gesture data to the base station</div>
+      </div>
+      <div class="img-block" style="margin:0;">
+        <div class="img-inner" style="height:280px;">
+          <img src="Media\MotionPaint\TestingHapticFeedback.png" alt="Haptic buzzer test rig" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+        </div>
+        <div class="img-caption">Haptic buzzer test rig, tuning vibration feedback for the glove</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-section">
+    <div class="eyebrow">Perception &amp; calibration</div>
+    <h2 class="section-h">Calibrating the camera to track a gesture</h2>
+    <p class="body-text">The IR camera was mounted at an unknown orientation and could be mirrored relative to the grid, so there was no fixed pixel-to-space mapping to hard-code in advance. Calibration walks the player through all four corners in order, top-left to top-right to bottom-right to bottom-left, holding each point until the IR signal reads clean and stable for three seconds before it's averaged and accepted. From those four correspondences, I compute their eigenvectors and build a new basis that maps any later camera reading onto grid coordinates, correcting for both rotation and reflection in how the camera sits.</p>
+    <div class="img-block" style="margin-top:1.25rem;">
+      <div style="padding:1.5rem 1.75rem 1rem;">
+      <svg viewBox="0 0 740 380" style="width:100%;height:auto;display:block;" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="mpArrowTeal2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="var(--teal)"/>
+          </marker>
+        </defs>
+
+        <text x="66" y="34" font-family="'IBM Plex Mono',monospace" font-size="12" letter-spacing="1" fill="var(--text2)">CAMERA VIEW (ROTATED &amp; MIRRORED)</text>
+        <text x="440" y="34" font-family="'IBM Plex Mono',monospace" font-size="12" letter-spacing="1" fill="var(--teal)">GRID SPACE (CORRECTED)</text>
+
+        <g transform="translate(180,200) rotate(-18) scale(-1,1) translate(-180,-200)">
+          <rect x="90" y="110" width="180" height="180" fill="var(--bg3)" stroke="var(--border2)" stroke-width="1.5"/>
+          <line x1="150" y1="110" x2="150" y2="290" stroke="var(--border)" stroke-width="1"/>
+          <line x1="210" y1="110" x2="210" y2="290" stroke="var(--border)" stroke-width="1"/>
+          <line x1="90" y1="200" x2="270" y2="200" stroke="var(--border)" stroke-width="1"/>
+          <circle cx="90" cy="110" r="5" fill="var(--text2)"/>
+          <circle cx="270" cy="110" r="5" fill="var(--text2)"/>
+          <circle cx="270" cy="290" r="5" fill="var(--text2)"/>
+          <circle cx="90" cy="290" r="5" fill="var(--text2)"/>
+        </g>
+        <text x="238" y="73" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="13" fill="var(--text2)">1</text>
+        <text x="67" y="128" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="13" fill="var(--text2)">2</text>
+        <text x="122" y="331" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="13" fill="var(--text2)">3</text>
+        <text x="293" y="276" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="13" fill="var(--text2)">4</text>
+
+        <rect x="430" y="110" width="180" height="180" fill="var(--bg3)" stroke="var(--teal)" stroke-width="1.5"/>
+        <line x1="490" y1="110" x2="490" y2="290" stroke="var(--border)" stroke-width="1"/>
+        <line x1="550" y1="110" x2="550" y2="290" stroke="var(--border)" stroke-width="1"/>
+        <line x1="430" y1="200" x2="610" y2="200" stroke="var(--border)" stroke-width="1"/>
+        <circle cx="430" cy="110" r="5" fill="var(--teal)"/>
+        <circle cx="610" cy="110" r="5" fill="var(--teal)"/>
+        <circle cx="610" cy="290" r="5" fill="var(--teal)"/>
+        <circle cx="430" cy="290" r="5" fill="var(--teal)"/>
+        <text x="430" y="98" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="13" fill="var(--teal)">1</text>
+        <text x="610" y="98" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="13" fill="var(--teal)">2</text>
+        <text x="610" y="308" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="13" fill="var(--teal)">3</text>
+        <text x="430" y="308" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="13" fill="var(--teal)">4</text>
+
+        <line x1="305" y1="200" x2="415" y2="200" stroke="var(--teal)" stroke-width="1.5" marker-end="url(#mpArrowTeal2)"/>
+        <text x="360" y="182" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="var(--teal)">calibration</text>
+        <text x="360" y="196" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="12" fill="var(--teal)">transform</text>
+      </svg>
+      </div>
+      <div class="img-caption">Calibration diagram: the camera's rotated, mirrored view corrected into grid space</div>
+    </div>
+  </div>
+
+  <div class="blog-section">
+    <div class="eyebrow">Game logic &amp; peripherals</div>
+    <h2 class="section-h">Driving the game logic and its outputs</h2>
+    <p class="body-text">The base station runs the entire game as a finite state machine I designed, moving through idle, sequence display, gesture validation, and round advancement as the player progresses. From there, it drives everything the player actually sees and feels: the LED grid lighting up the sequence, an LCD screen running on a driver I wrote from scratch, haptic feedback buzzing the glove to confirm a hit, and the camera watching for each new gesture. Underneath all of that, a companion laptop app stays connected over a serial link, handling audio cues and keeping score between rounds.</p>
+    <div class="img-block" style="margin-top:1.25rem;">
+      <div class="img-inner" style="height:280px;">
+        <img src="Media\MotionPaint\LED_Benchtop.png" alt="LED grid benchtop test rig" style="width:100%;height:100%;object-fit:cover;object-position:center;">
+      </div>
+      <div class="img-caption">LED grid benchtop test rig during driver bring-up</div>
+    </div>
+  </div>
+
+</div>
+</div><!-- /motionpaint -->
+
+
+<!-- ════════════════ MORE ════════════════ -->
+<div class="view" id="view-gm">
+<div class="detail" style="max-width:var(--max);">
+  <button class="back-btn" onclick="go('home',document.querySelectorAll('.nav-tab')[0])">
+    <i class="ti ti-arrow-left" aria-hidden="true"></i> Home
+  </button>
+
+  <!-- HEADER -->
+  <div style="display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;margin-top:1.25rem;margin-bottom:0.8rem;background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;padding:1rem 1.75rem;">
+    <div>
+      <div class="detail-meta" style="font-size:16px;">General Motors · Detroit, MI · Summer 2025</div>
+      <h1 class="detail-title" style="margin-bottom:0.6rem;">Controls Engineer Intern</h1>
+      <div class="detail-role">Machine Vision · PLC &amp; HMI Integration</div>
+    </div>
+    <div style="width:170px;height:220px;border-radius:8px;overflow:hidden;border:0.5px solid var(--border);flex-shrink:0;">
+      <img src="Media\GM\GM_FactoryZeroPhoto.jpg" alt="Brady at Factory Zero" style="width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block;">
+    </div>
+  </div>
+
+  <!-- METRICS -->
+  <div class="metrics three" style="margin-bottom:2.5rem;">
+    <div class="mcard"><div class="mcard-val">Paint Shop</div><div class="mcard-key">Factory Zero, Detroit</div></div>
+    <div class="mcard"><div class="mcard-val">Vision</div><div class="mcard-key">FANUC Vision &amp; OCR</div></div>
+    <div class="mcard"><div class="mcard-val">PLC &amp; HMI</div><div class="mcard-key">Logic, Faults &amp; Alarms</div></div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="blog-section">
+    <div class="eyebrow">Overview</div>
+    <h2 class="section-h">Building error-proofing systems in Factory Zero's paint shop</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start;margin-top:1rem;">
+      <p class="body-text" style="margin:0;">I interned on the paint shop controls team, working two separate vision-based error-proofing problems: cutting faults on the plant's automated body-plug line, and building a camera system to stop one of six visually similar charge port door variants from getting installed on the wrong vehicle.</p>
+      <div class="img-block" style="margin:0;">
+        <div class="img-inner" style="height:220px;">
+          <img src="Media\GM\GM_FactoryFloor.png" alt="Factory Zero production floor" style="object-position:center 62%;">
+        </div>
+        <div class="img-caption">Factory Zero production floor</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLUG VISION -->
+  <div class="blog-section">
+    <div class="eyebrow">Plug Cell</div>
+    <h2 class="section-h">Robots install 12,000 plugs a day, so I automated inspection</h2>
+    <p class="body-text">FANUC robots insert roughly 12,000 plugs a day, each verified by IR machine vision. On a sampled day, the line logged 524 false-positive faults against just 37 real ones. Memory limitations meant the cameras kept only the pass/fail measurements, not the images behind them. So I built an OCR logger that taps into the live camera feed on the plant floor, reads the results directly, and saves the images to my computer, bypassing the old system entirely and letting me verify plugs visually even when I wasn't on the floor.</p>
+
+    <div style="margin-top:1.5rem;">
+      <div class="label-mini teal">What the camera sees</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div class="img-block" style="margin:0;">
+          <div class="img-inner" style="height:200px;background:#000;">
+            <img src="Media\GM\GM_OCR_Tool.png" alt="Vision system correctly detecting a plug" style="object-fit:contain;">
+          </div>
+          <div class="img-caption">Pass: plug detected and confirmed</div>
+        </div>
+        <div class="img-block" style="margin:0;">
+          <div class="img-inner" style="height:200px;background:#000;">
+            <img src="Media\GM\GM_OCR_Tool_Fail.png" alt="Vision system flagging a false-positive fault" style="object-fit:contain;">
+          </div>
+          <div class="img-caption">Fail: a false-positive fault, no plug missing</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="body-text" style="margin-top:1.5rem;">The tool gave me a UI for defining scanning zones per camera, OCR to classify plug type and pass/fail result, and automatic image capture, paired with an Excel model tracking all 272 unique plug styles and their degrade scenarios. That turned a vague sense that faults were high into a precise, per-style record of exactly where they were coming from.</p>
+    <p class="body-text">That data drove an iterative loop: tune a threshold or reteach a robot, watch the fault data shift, then go verify by hand on specific cars further down the line where the numbers looked off. Plugs typically sit low on the vehicle underbody, and you'd need to be 10 feet tall to see them, so I had to be deliberate about what I could verify directly and lean on operators on the floor to help confirm the rest. Daily vision faults dropped from over 400 to about 25. The overall fault rate went from 4.1% to 0.58%, with the worst-offending style, ZL, falling from 18.6% to roughly 1%.</p>
+
+    <div style="background:var(--bg2);border:0.5px solid var(--border2);border-radius:8px;overflow:hidden;margin-top:1.25rem;display:flex;flex-direction:column;">
+      <div style="display:grid;">
+        <div id="gm-chart-panel-0" style="grid-row:1;grid-column:1;padding:1.25rem 1.25rem 0.5rem;visibility:visible;">
+          <img src="Media\GM\GM_VisionFaultsChart.png" alt="Vision faults over time" style="width:100%;display:block;object-fit:contain;filter:invert(1) hue-rotate(180deg) url(#plot-darkbg);">
+          <div class="img-caption" style="border-top:none;padding:0.6rem 0 0;">Overall vision fault rate over the course of the internship.</div>
+        </div>
+        <div id="gm-chart-panel-1" style="grid-row:1;grid-column:1;padding:1.25rem 1.25rem 0.5rem;visibility:hidden;">
+          <img src="Media\GM\GM_PlugFaultsByStyle.png" alt="Plug faults for worst three styles" style="width:100%;display:block;object-fit:contain;filter:invert(1) hue-rotate(180deg) url(#plot-darkbg);">
+          <div class="img-caption" style="border-top:none;padding:0.6rem 0 0;">The three worst-offending plug styles, tracked separately as I tuned.</div>
+        </div>
+      </div>
+      <div style="display:flex;border-top:0.5px solid var(--border);">
+        <button id="gm-chart-dot-0" onclick="gmChartGoTo(0)" class="carousel-tab" style="color:var(--teal);background:var(--teal-bg);">Vision Faults Over Time</button>
+        <button id="gm-chart-dot-1" onclick="gmChartGoTo(1)" class="carousel-tab">Plug Faults By Style</button>
+      </div>
+    </div>
+
+    <script>
+      var gmChartIdx = 0;
+      function gmChartGoTo(n) {
+        var prev = document.getElementById('gm-chart-dot-' + gmChartIdx);
+        prev.style.color = 'var(--text2)';
+        prev.style.background = 'none';
+        document.getElementById('gm-chart-panel-' + gmChartIdx).style.visibility = 'hidden';
+        gmChartIdx = n;
+        document.getElementById('gm-chart-panel-' + gmChartIdx).style.visibility = 'visible';
+        var next = document.getElementById('gm-chart-dot-' + gmChartIdx);
+        next.style.color = 'var(--teal)';
+        next.style.background = 'var(--teal-bg)';
+      }
+    </script>
+  </div>
+
+  <!-- CHARGE PORT DOORS -->
+  <div class="blog-section">
+    <div class="eyebrow">Charge Port Doors</div>
+    <h2 class="section-h">A camera check to stop the wrong door from getting installed</h2>
+    <p class="body-text">Six charge port door variants run through one shared install footprint, and pairs like CC/CG and YL/ZL look nearly identical but aren't interchangeable. 
+      The existing pick lights couldn't catch mixed supplier stock, so a wrong door wouldn't surface until General Assembly, which became a two-shift scramble to fabricate a replacement. 
+      I evaluated a mobile hand scanner against a fixed-mounted camera, and walked the decision through with the operator at that station: we talked through the pros and cons of each,
+       ran through the actual door-handling motion together, and felt out where a camera could realistically sit. A handheld scanner would've been messy with sealer on the operator's hands, 
+       and its drop-off point was too far from the work area, so the camera won out. Finding the right spot mattered as much as the technical choice, since if the operator didn't like the system, 
+       they'd find a way around it.</p>
+
+    <p class="body-text">Once we settled on a camera and its placement, I trained the camera's OCR to read each door's style character, tuned lighting, positioning, and trigger speed. I also integrated 
+      the PLC logic that switches the camera's active program and reads back its result automatically. On the HMI side I added new faults and alarms, a bypass button, and a stack light for operator status. 
+      After a few rounds of feedback with the operator on the floor, I authored the Task Instruction Sheet for validating the whole system end to end, and worked with Industrial Engineering on the accompanying 
+      Job Element Sheet, the standardized work the line runs on now. The finished system added about a second to operator cycle time and is expected to eliminate the mis-install problem entirely, pending final validation.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;">
+      <div class="img-block" style="margin:0;">
+        <div class="img-inner" style="height:340px;">
+          <img src="Media\GM\GM_MonitorDemo.png" alt="Charge port door held under the fixed-mount camera" style="object-position:30% 78%;">
+        </div>
+        <div class="img-caption">Charge port door held under camera for verification</div>
+      </div>
+      <div class="img-block" style="margin:0;">
+        <div class="img-inner" style="height:340px;">
+          <img src="Media\GM\GM_InstalledMonitor.png" alt="Camera OCR readout confirming door style" style="object-position:center 12%;">
+        </div>
+        <div class="img-caption">OCR readout confirming the style, OK to proceed</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="pull-quote">
+    <p>
+      From my time in the Paint Shop, I learned that it doesn't matter how well a system is built if the people using it don't trust it. Earning that trust turned out to be the harder problem, spanning everything from making sure the system behaved correctly under edge cases and was properly tuned, to making sure the right documentation and training existed. Without alignment between operators and the technology, overrides get given without a second thought, and defects can spiral into costs of thousands for the company. Adopting a listening-first mindset made me a better engineer, one who builds real relationships with people to make sure not just that a problem gets solved, but that the right problem is understood and solved.
+    </p>
+  </div>
+
+
+</div>
+</div><!-- /gm -->
+
+
+<!-- ════════════════ EQUIPMENT TECHNOLOGIES ════════════════ -->
+<div class="view" id="view-et">
+<div class="detail" style="max-width:var(--max);">
+  <button class="back-btn" onclick="go('home',document.querySelectorAll('.nav-tab')[0])">
+    <i class="ti ti-arrow-left" aria-hidden="true"></i> Home
+  </button>
+
+  <!-- HEADER -->
+  <div style="display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:center;margin-bottom:0.8rem;background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;padding:1rem 1.75rem;">
+    <div>
+      <div class="detail-meta" style="font-size:16px;">Equipment Technologies · Mooresville, IN · May – Aug 2026</div>
+      <h1 class="detail-title" style="margin-bottom:0.6rem;font-size:40px;">Vehicle Controls &amp; Software Intern</h1>
+      <div class="detail-role">Embedded Controls · CAN Bus · Agricultural Vehicles</div>
+    </div>
+    <div style="width:145px;height:220px;border-radius:8px;overflow:hidden;border:0.5px solid var(--border);flex-shrink:0;">
+      <img src="Media\ET\ET_Hero.png" alt="Brady at Equipment Technologies" style="width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block;">
+    </div>
+  </div>
+
+  <!-- METRICS -->
+  <div class="metrics three" style="margin-bottom:2.5rem;">
+    <div class="mcard"><div class="mcard-val">Ag Vehicles</div><div class="mcard-key">Farming Sprayers</div></div>
+    <div class="mcard"><div class="mcard-val">J1939 CAN Bus</div><div class="mcard-key">Embedded Networks</div></div>
+    <div class="mcard"><div class="mcard-val">Production SW</div><div class="mcard-key">Deployed on Live Machines</div></div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="blog-section">
+    <div class="eyebrow">Overview</div>
+    <h2 class="section-h">Pushing production code for a new machine launch</h2>
+    <p class="body-text">Equipment Technologies was in the middle of launching a new sprayer model with an upgraded cabin and a redesigned set of electronics, and I was one of three people on the software team writing the control code that would ship on it. Working in CODESYS with everything tracked through GitHub, I spent the summer pushing fixes and new features across the machine: a closed-loop fan controller, safety-critical redundancy logic, lighting, and a long list of smaller systems that needed real debugging time on the bench and in the cab.</p>
+  </div>
+
+  <!-- ENGINE COOLING FAN -->
+  <div class="blog-section">
+    <div class="eyebrow">Engine Cooling Fan</div>
+    <h2 class="section-h">A pneumatic fan needed a robust control loop</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;align-items:start;margin-top:1rem;">
+      <p class="body-text" style="margin:0;">The engine cooling fan's blade pitch is set by a pneumatic valve, and how it was being driven caused real problems: too little actuation ran the engine hot, wide open all the time was needlessly loud, and constant oscillation wore the mechanism down faster than it needed to. I needed a control loop that could hold a stable pitch across real field conditions, with fan reversing, the AC compressor, and engine cooling demand all shifting the target at once.</p>
+      <div class="img-block" style="margin:0;">
+        <div class="img-inner" style="height:260px;">
+          <img src="Media\ET\ET_FanEngineBay_Wide.jpeg" alt="Cooling fan installed in the engine bay">
+        </div>
+        <div class="img-caption">The cooling fan, installed in the engine bay</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;align-items:start;margin-top:1.5rem;">
+      <div class="img-block" style="margin:0;">
+        <div class="img-inner" style="height:260px;">
+          <img src="Media\ET\ET_FanTestRig.jpeg" alt="Fan controller test rig on the bench" style="object-position:center 40%;">
+        </div>
+        <div class="img-caption">Bench test rig: fan, controller, and logging laptop</div>
+      </div>
+      <p class="body-text" style="margin:0;">Existing tools gave almost no visibility into what the valve was doing, so I connected to the SPU70 over CAN and built a bench setup that logged every signal in real time. From there I wrote a per-unit calibration routine, an auto-control mode with tuned on-off pulses, and fault detection for the failure modes that mattered, then ran two weeks of step and ramp tests before the first engine test.</p>
+    </div>
+
+    <div class="img-block" style="margin-top:1.5rem;">
+      <img src="Media\ET\ET_FanTrackingPlot_StepRampRandom.png" alt="Fan pitch tracking actual vs. setpoint under step, ramp, and random inputs" style="width:100%;display:block;">
+      <div class="img-caption">Actual pitch (blue) tracking setpoint (red) under changing step-inputs</div>
+    </div>
+    <p class="body-text" style="margin-top:1rem;">I tried a simple on-off controller first, but it was unstable, so I reworked the loop to add deliberate delays, driving the valve in tuned on-off pulses instead of chasing the setpoint continuously. That dropped average tracking error under aggressive ramp and step changes from 11.8° to 2.9°. From there it went onto the machine itself, where it held up through a dealer meeting, a tuning visit from Allison Transmission, and the usual debugging moves elsewhere on the machine, logging over 15 hours of real drive time so far. Faults behaved correctly throughout, and with only minor tweaks since, it's still running on the machine today.</p>
+  </div>
+
+  <!-- PARK BRAKE REDUNDANCY -->
+  <div class="blog-section">
+    <div class="eyebrow">Park Brake Redundancy</div>
+    <h2 class="section-h">Building a safety-critical system that people can lean on</h2>
+    <p class="body-text">The park brake is effectively our emergency stop, so this couldn't just work most of the time, it had to be precise about every single edge case. Its status comes from three independent sources: a hardwired SPU70 line and two redundant CAN channels, ChA and ChB. Any one of them can fail, read wrong, or time out on its own, and the system has to know exactly when to trust which signal, because getting that wrong in either direction is dangerous: miss a real failure and the brake doesn't hold when it should, or trip the fallback incorrectly and it could engage while someone's driving at speed.</p>
+    <p class="body-text">I wrote the specification that decided exactly how to handle every one of those cases: what happens when the hardwire disagrees with the CAN channels, when one channel times out but the other doesn't, when both go dark at once. Every combination maps to a specific behavior, normal operation, a minor fault, or a major fault that engages the brake as soon as it's safe to.</p>
+
+    <div class="img-block" style="margin-top:1.5rem;">
+      <img src="Media\ET\ET_ParkBrakeFaultMatrix.png" alt="Park brake fault matrix mapping signal combinations to fault behavior" style="width:100%;display:block;">
+      <div class="img-caption">Every signal combination mapped to a fault classification and behavior</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;align-items:start;margin-top:1.5rem;">
+      <p class="body-text" style="margin:0;">Most of the real thinking went into the electrical failure modes, not just the software logic: a wire can break, short to ground or power, or report a value that's technically in range but physically impossible, and each case needs to be diagnosed differently. I implemented that classification directly on the SPU70, reading the raw CAN bytes off both channels and the hardwired line every cycle and stepping through the mismatch and timeout logic in real time. The 1.5 mph speed lockout ties into the same thinking: a major fault means the machine shouldn't keep driving on safety logic it can no longer fully trust, so it locks out below walking speed and forces a service call instead.</p>
+      <div class="img-block" style="margin:0;">
+        <img src="Media\ET\ET_ParkBrakeUI.png" alt="Bench UI for forcing park brake signals and simulating fault conditions" style="width:100%;display:block;">
+        <div class="img-caption">The bench UI, forcing each input independently to simulate every fault case</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTOSTEER DISENGAGE -->
+  <div class="blog-section">
+    <div class="eyebrow">Autosteer Disengage</div>
+    <h2 class="section-h">Turning the wheel is the only way out of autosteer</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;align-items:start;margin-top:1rem;">
+      <div>
+        <p class="body-text">Our autosteer disengage works off a steering sensor: turn the wheel and the system drops out of autosteer. This had to be reliable, since a noisy signal could get the setup misread as an encoder, and there's no other way to disengage autosteer if that logic fails, so it carried the same weight as any other safety-critical system on the machine.</p>
+        <p class="body-text">I wrote the new SPU70 code that implements the disengage and validated it on a 1:1 mapping of the actual setup: two controllers, the same steering sensor, and an oscilloscope to see the real output values. I also built a UI during testing to fine-tune the trigger lengths by feel.</p>
+      </div>
+      <div class="img-block" style="margin:0;">
+        <img src="Media\ET\ET_AutosteerBench.jpeg" alt="Autosteer disengage bench setup with oscilloscope and relay hardware" style="width:100%;display:block;">
+        <div class="img-caption">1:1 pin-to-device bench validation before touching a real machine</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VEHICLE LIGHTING -->
+  <div class="blog-section">
+    <div class="eyebrow">Vehicle Lighting</div>
+    <h2 class="section-h">Lighting isn't just cosmetic when you're spraying at night</h2>
+    <p class="body-text">Lighting matters more than it might seem: night spraying happens in the pitch dark, and if the lights aren't responsive, adjustable, and just working, the operator loses real visibility out in the field. I wired up control for the full set: work lights, hood lights, beacon, light bars, mood/dome/marker lights, hazards, and the keypad, shuffle, and shifter backlighting.</p>
+    <p class="body-text">Beyond just switching lights on and off, I integrated the system with the display for dimming and a day/night mode, added backlighting to the keypad and its function buttons, and built steering column macros so specific lights can be triggered with a single button override instead of digging through menus. I also debugged the hazards after they weren't behaving correctly, and handled the hood lights and work lights themselves. On top of that, the redesigned steering column stalk added dedicated park/road/field modes, plus a configurable automatic shutoff so nothing gets left on by accident.</p>
+
+    <div class="img-block" style="margin-top:1.5rem;">
+      <div class="img-inner" style="height:480px;">
+        <img src="Media\ET\ET_LightingHero.jpeg" alt="Sprayer with full lighting set lit at dusk" style="object-position:center 58%;">
+      </div>
+      <div class="img-caption">Work lights, hood lights, and beacon lit on the finished machine</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;">
+      <div class="img-block" style="margin:0;">
+        <div class="img-inner" style="height:220px;">
+          <img src="Media\ET\ET_KeypadLEDs.png" alt="Cabin lighting keypad with backlit buttons">
+        </div>
+        <div class="img-caption">Cabin lighting keypad with backlit buttons</div>
+      </div>
+      <div class="img-block" style="margin:0;">
+        <div class="img-inner" style="height:220px;">
+          <img src="Media\ET\ET_SteeringColumnStalk.png" alt="Redesigned steering column stalk with park/road/field modes">
+        </div>
+        <div class="img-caption">Steering column stalk to trigger park/road/field modes</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OTHER CONTRIBUTIONS -->
+  <div class="blog-section">
+    <div class="eyebrow">Other Contributions</div>
+    <h2 class="section-h">A long list of smaller systems, each a real fix</h2>
+    <p class="body-text">A constant stream of smaller systems needed attention too, none big enough for their own section, but each one shipped a real fix or feature on the machine.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:1.25rem;">
+      <div style="padding:1rem 1.25rem;background:var(--bg2);border:0.5px solid var(--border);border-radius:8px;">
+        <div class="card-title">Armrest Shuffle Radio Controls</div>
+        <div class="card-desc">Volume by dial rotation, power and mute from press duration, handling concurrent input from the shuffle and radio, and a UI to brute-force which source address was actually in use while preserving existing settings on a shared PGN.</div>
+      </div>
+      <div style="padding:1rem 1.25rem;background:var(--bg2);border:0.5px solid var(--border);border-radius:8px;">
+        <div class="card-title">CAN Infrastructure</div>
+        <div class="card-desc">Migrated the big machine's pump controls to a new CAN line using lower-level send/receive routines, integrated a second 6-button keypad on the first prototype, and wrote a new cabin CAN symbol file covering the armrest, keypads, radio, steering column, and SASA.</div>
+      </div>
+      <div style="padding:1rem 1.25rem;background:var(--bg2);border:0.5px solid var(--border);border-radius:8px;">
+        <div class="card-title">Ignition &amp; Start Sequence</div>
+        <div class="card-desc">Built the state machine gating engine start: waiting on the OktoStart interlock, then requiring a held button press to crank and a separate hold to shut down, so a quick tap can't accidentally start or kill the engine.</div>
+      </div>
+      <div style="padding:1rem 1.25rem;background:var(--bg2);border:0.5px solid var(--border);border-radius:8px;">
+        <div class="card-title">Debugging &amp; Small Fixes</div>
+        <div class="card-desc">Machine-level debugging and wire harness work whenever a bench issue turned out to be electrical rather than software, plus a handful of one-off fixes: rear work light flash, hazard lights, and wiper/washer control.</div>
+      </div>
+    </div>
+
+    <div class="img-block" style="margin-top:1.5rem;">
+      <img src="Media\ET\ET_RadioCANDebugUI.png" alt="Radio CAN debug tool brute-forcing the shuffle's source address" style="width:100%;display:block;">
+      <div class="img-caption">The tool used to brute-force the shuffle's CAN source address</div>
+    </div>
+  </div>
+
+  <!-- WRAP-UP -->
+  <div class="blog-section">
+    <div class="eyebrow">Wrap-Up</div>
+    <h2 class="section-h">Shipping breadth, not just depth</h2>
+    <div class="img-block" style="margin-top:1rem;">
+      <div class="img-inner" style="height:460px;">
+        <img src="Media\ET\ET_TeamPhoto.png" alt="Equipment Technologies software and engineering team in front of the new sprayer" style="object-position:center 38%;">
+      </div>
+      <div class="img-caption">The team behind the launch</div>
+    </div>
+    <div class="pull-quote" style="margin-top:1.5rem;">
+      <p>
+        With three of us covering an entire machine's software, there was no room to pick and choose. A safety-critical fault matrix and a wiper switch shipped side by side, and both had to work. Knowing which one needed a formal spec, and which one just needed to get done, was its own skill.</p>
+    </div>
+  </div>
+
+</div>
+</div><!-- /et -->
+
+
+<script>
+function activateView(id, anchor) {
+  document.querySelectorAll('video').forEach(v => v.pause());
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  var view = document.getElementById('view-' + id);
+  if (view) view.classList.add('active');
+  document.querySelectorAll('.nav-tab').forEach(t => {
+    var oc = t.getAttribute('onclick');
+    if (oc && oc.includes("'" + id + "'")) t.classList.add('active');
+  });
+  if (anchor) {
+    setTimeout(function() {
+      var el = document.getElementById(anchor);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  } else {
+    window.scrollTo(0, 0);
+  }
+}
+
+function go(id, btn, anchor) {
+  activateView(id, anchor);
+  if (btn && btn.classList && btn.classList.contains('nav-tab')) {
+    btn.classList.add('active');
+  }
+  history.pushState({ view: id, anchor: anchor || null }, '',
+    id === 'turkey' ? window.location.pathname : '#' + id);
+}
+
+window.addEventListener('popstate', function(e) {
+  var id = (e.state && e.state.view) || 'turkey';
+  activateView(id, null);
+});
+
+(function() {
+  var hash = window.location.hash.slice(1);
+  var id = (hash && document.getElementById('view-' + hash)) ? hash : 'turkey';
+  if (id !== 'turkey') activateView(id, null);
+  history.replaceState({ view: id, anchor: null }, '', window.location.href);
+})();
+</script>
+</body>
+</html>

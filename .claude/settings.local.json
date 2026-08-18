@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Select-String -Path \"c:\\\\Users\\\\brady\\\\OneDrive\\\\Desktop\\\\Job_Armory\\\\Portfolio\\\\brady_portfolio.html\" -Pattern \"under the hood|Under the Hood|UNDER THE HOOD\" -n)",
+      "Bash(Select-Object -First 10)",
+      "Bash(Select-String -Path \"c:\\\\Users\\\\brady\\\\OneDrive\\\\Desktop\\\\Job_Armory\\\\Portfolio\\\\brady_portfolio.html\" -Pattern \"closing|conclusion|Closing|Conclusion|placeholder\" -n)",
+      "Bash(Copy-Item \"20251112_182122.jpg\" \"Incubator_Final_SideOpen.jpg\")",
+      "Bash(Copy-Item \"20251112_182128.jpg\" \"Incubator_Final_TopOpen.jpg\")",
+      "Bash(Copy-Item \"20251112_183040.jpg\" \"Incubator_Final_Assembled.jpg\")",
+      "Bash(Copy-Item \"20251112_183042.jpg\" \"Incubator_Final_Front.jpg\")",
+      "Bash(Copy-Item \"20251121_145234.jpg\" \"Incubator_Integration_Testing.jpg\")",
+      "Bash(dir \"c:\\\\Users\\\\brady\\\\OneDrive\\\\Desktop\\\\Job_Armory\\\\Portfolio\\\\Media\")",
+      "Bash(python3 -c ' *)",
+      "Bash(powershell -command ' *)",
+      "PowerShell(Remove-Item -Recurse -Force \"c:\\\\Users\\\\brady\\\\OneDrive\\\\Desktop\\\\Job_Armory\\\\Portfolio\\\\Media\\\\Incubator\\\\Temp\" -Confirm:$false)",
+      "PowerShell(Remove-Item -Force \"c:\\\\Users\\\\brady\\\\OneDrive\\\\Desktop\\\\Job_Armory\\\\Portfolio\\\\Media\\\\Incubator\\\\Incubator_SoftwareDesignFlowChart.png\" -Confirm:$false)",
+      "Bash(dir \"c:\\\\Users\\\\brady\\\\OneDrive\\\\Desktop\\\\Job_Armory\\\\Portfolio\\\\Media\\\\ET\")",
+      "WebSearch",
+      "Bash(npm --version)",
+      "Bash(npx --yes playwright --version)",
+      "Bash(npx playwright *)",
+      "Bash(node \"C:\\\\Users\\\\brady\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio\\\\9e14ab16-3e7a-45ec-8eb0-b8db63e6b87f\\\\scratchpad\\\\shot.js\" brady_portfolio.html \"C:\\\\Users\\\\brady\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio\\\\9e14ab16-3e7a-45ec-8eb0-b8db63e6b87f\\\\scratchpad\")",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Bash(node -e ' *)",
+      "Bash(node \"C:\\\\Users\\\\brady\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio\\\\9e14ab16-3e7a-45ec-8eb0-b8db63e6b87f\\\\scratchpad\\\\inspect.js\" brady_portfolio.html)",
+      "Bash(node \"C:\\\\Users\\\\brady\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio\\\\9e14ab16-3e7a-45ec-8eb0-b8db63e6b87f\\\\scratchpad\\\\shot2.js\" brady_portfolio.html \"C:\\\\Users\\\\brady\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio\\\\9e14ab16-3e7a-45ec-8eb0-b8db63e6b87f\\\\scratchpad\")",
+      "Bash(\"C:\\\\Program Files\\\\nodejs\\\\node.exe\" -e \"console.log\\(1\\)\")",
+      "Bash(node \"C:\\\\Users\\\\brady\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio\\\\9e14ab16-3e7a-45ec-8eb0-b8db63e6b87f\\\\scratchpad\\\\shot3.js\" brady_portfolio.html \"C:\\\\Users\\\\brady\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio\\\\9e14ab16-3e7a-45ec-8eb0-b8db63e6b87f\\\\scratchpad\")",
+      "Bash(node \"C:\\\\Users\\\\brady\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio\\\\9e14ab16-3e7a-45ec-8eb0-b8db63e6b87f\\\\scratchpad\\\\vidinfo.js\" Incubator_STM32_Sim.mp4 Incubator_UI_Demo.mp4 Incubator_RemoteStart.mp4 Incubator_DatabasingBackend.mp4)",
+      "Bash(timeout 30 node \"C:\\\\Users\\\\brady\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio\\\\9e14ab16-3e7a-45ec-8eb0-b8db63e6b87f\\\\scratchpad\\\\vidinfo.js\" Incubator_STM32_Sim.mp4 Incubator_UI_Demo.mp4 Incubator_RemoteStart.mp4 Incubator_DatabasingBackend.mp4)"
+    ]
+  }
+}

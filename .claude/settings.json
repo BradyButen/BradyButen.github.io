@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp brady_portfolio.html /c/Users/brady/AppData/Local/Temp/claude/c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio/545015d2-922d-4e8c-9ef3-5628c67aa441/scratchpad/backup_before_reorder.html)",
+      "Bash(python -c ' *)",
+      "Bash(NODE_PATH=\"/c/Users/brady/AppData/Local/npm-cache/_npx/705bc6b22212b352/node_modules\" node \"C:\\\\Users\\\\brady\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio\\\\545015d2-922d-4e8c-9ef3-5628c67aa441\\\\scratchpad\\\\screenshot.js\" brady_portfolio.html \"C:\\\\Users\\\\brady\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio\\\\545015d2-922d-4e8c-9ef3-5628c67aa441\\\\scratchpad\\\\inc4\" incubator)",
+      "Bash(NODE_PATH=\"/c/Users/brady/AppData/Local/npm-cache/_npx/705bc6b22212b352/node_modules\" node \"C:\\\\Users\\\\brady\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio\\\\545015d2-922d-4e8c-9ef3-5628c67aa441\\\\scratchpad\\\\screenshot.js\" brady_portfolio.html \"C:\\\\Users\\\\brady\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio\\\\545015d2-922d-4e8c-9ef3-5628c67aa441\\\\scratchpad\\\\inc5\" incubator)",
+      "Bash(NODE_PATH=\"/c/Users/brady/AppData/Local/npm-cache/_npx/705bc6b22212b352/node_modules\" node \"C:\\\\Users\\\\brady\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio\\\\545015d2-922d-4e8c-9ef3-5628c67aa441\\\\scratchpad\\\\screenshot.js\" brady_portfolio.html \"C:\\\\Users\\\\brady\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio\\\\545015d2-922d-4e8c-9ef3-5628c67aa441\\\\scratchpad\\\\home4\" home)",
+      "Bash(cp brady_portfolio.html /c/Users/brady/AppData/Local/Temp/claude/c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio/545015d2-922d-4e8c-9ef3-5628c67aa441/scratchpad/backup_before_method_rewrite.html)",
+      "Bash(NODE_PATH=\"/c/Users/brady/AppData/Local/npm-cache/_npx/705bc6b22212b352/node_modules\" node \"C:\\\\Users\\\\brady\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio\\\\545015d2-922d-4e8c-9ef3-5628c67aa441\\\\scratchpad\\\\screenshot.js\" brady_portfolio.html \"C:\\\\Users\\\\brady\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio\\\\545015d2-922d-4e8c-9ef3-5628c67aa441\\\\scratchpad\\\\m1\" incubator)",
+      "Bash(ls \"/c/Users/brady/AppData/Local/Temp/claude/c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio/7a9c28df-ad2a-457a-8dd2-8492d1a08063/scratchpad\" 2>/dev/null; echo \"---\"; ls \"/c/Users/brady/AppData/Local/npm-cache/_npx/705bc6b22212b352/node_modules\" 2>/dev/null | head)",
+      "Read(//c/Users/brady/AppData/Local/Temp/claude/c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio/7a9c28df-ad2a-457a-8dd2-8492d1a08063/scratchpad/**)",
+      "Bash(NODE_PATH=\"/c/Users/brady/AppData/Local/npm-cache/_npx/705bc6b22212b352/node_modules\" node shot.js linkage_full.png)",
+      "Bash(python3 -c \"import PIL; print\\(PIL.__version__\\)\")",
+      "Bash(python -c \"from PIL import Image; print\\('ok'\\)\")",
+      "Bash(NODE_PATH=\"/c/Users/brady/AppData/Local/npm-cache/_npx/705bc6b22212b352/node_modules\" node shot.js linkage_full2.png)",
+      "Bash(awk 'NR==1526,NR==1600' \"/c/Users/brady/OneDrive/Desktop/Job_Armory/Portfolio/brady_portfolio.html\")",
+      "Bash(NODE_PATH=\"/c/Users/brady/AppData/Local/npm-cache/_npx/705bc6b22212b352/node_modules\" node shot.js linkage_split.png)",
+      "Bash(NODE_PATH=\"/c/Users/brady/AppData/Local/npm-cache/_npx/705bc6b22212b352/node_modules\" node shot.js linkage_polish.png)",
+      "Bash(NODE_PATH=\"/c/Users/brady/AppData/Local/npm-cache/_npx/705bc6b22212b352/node_modules\" node shot.js linkage_streamlined.png)",
+      "Bash(NODE_PATH=\"/c/Users/brady/AppData/Local/npm-cache/_npx/705bc6b22212b352/node_modules\" node shot.js linkage_report.png)",
+      "Bash(awk 'NR==1526,NR==1595' \"/c/Users/brady/OneDrive/Desktop/Job_Armory/Portfolio/brady_portfolio.html\")",
+      "Bash(NODE_PATH=\"/c/Users/brady/AppData/Local/npm-cache/_npx/705bc6b22212b352/node_modules\" node shot.js linkage_title.png)",
+      "Bash(NODE_PATH=\"/c/Users/brady/AppData/Local/npm-cache/_npx/705bc6b22212b352/node_modules\" node shot.js linkage_final.png)",
+      "Bash(awk 'NR==1526,NR==1592' \"/c/Users/brady/OneDrive/Desktop/Job_Armory/Portfolio/brady_portfolio.html\")",
+      "Bash(NODE_PATH=\"/c/Users/brady/AppData/Local/npm-cache/_npx/705bc6b22212b352/node_modules\" node diagnose.js)",
+      "Bash(find /c/Users/brady -iname \"*7_28_Draft*\" -o -iname \"*End*Internship*Presentation*\" 2>/dev/null | grep -v \"AppData/Local/Microsoft\" | head -20)",
+      "Read(//c/Users/brady/**)",
+      "Read(//c/Users/brady/Downloads/**)",
+      "Bash(mkdir -p /tmp/pptx_extract)",
+      "Read(//c/Users/brady/AppData/Local/Temp/claude/c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio/7a9c28df-ad2a-457a-8dd2-8492d1a08063/scratchpad/et_media/**)",
+      "Bash(NODE_PATH=\"/c/Users/brady/AppData/Local/npm-cache/_npx/705bc6b22212b352/node_modules\" node shot_et.js et_full.png)",
+      "Bash(NODE_PATH=\"/c/Users/brady/AppData/Local/npm-cache/_npx/705bc6b22212b352/node_modules\" node shot_et_crops.js)",
+      "Bash(awk '/id=\"view-et\"/,/\\\\/et -->/' brady_portfolio.html)",
+      "Bash(NODE_PATH=\"/c/Users/brady/AppData/Local/npm-cache/_npx/705bc6b22212b352/node_modules\" node shot_et.js et_full2.png)",
+      "Bash(ls \"/c/Users/brady/AppData/Local/Temp/claude/c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio/42a6db02-f930-462b-9da9-802c9dcf87cc/scratchpad\" 2>&1)",
+      "Read(//c/Users/brady/AppData/Local/Temp/claude/c--Users-brady-OneDrive-Desktop-Job-Armory-Portfolio/42a6db02-f930-462b-9da9-802c9dcf87cc/scratchpad/**)"
+    ]
+  }
+}
